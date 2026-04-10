@@ -29,14 +29,49 @@ const Contact = () => {
   return (
     <Layout>
       <section className="py-24 lg:py-32">
-        <div className="max-w-2xl mx-auto px-6 lg:px-12">
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Contact</p>
-          <h1 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-6">
-            Start a conversation.
-          </h1>
-          <p className="text-sm text-muted-foreground mb-16">
-            Selected clients will be invited to a consultation.
-          </p>
+        <div className="max-w-5xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Left: Contact details */}
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Contact</p>
+              <h1 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-6">
+                Start a conversation.
+              </h1>
+              <p className="text-sm text-muted-foreground mb-12">
+                Selected clients will be invited to a consultation.
+              </p>
+
+              <div className="space-y-8">
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Email</p>
+                  <a href="mailto:hello@nalediinteriors.com" className="text-sm text-foreground hover:text-accent transition-colors">hello@nalediinteriors.com</a>
+                </div>
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Phone</p>
+                  <a href="tel:+27123456789" className="text-sm text-foreground hover:text-accent transition-colors">+27 12 345 6789</a>
+                </div>
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">WhatsApp</p>
+                  <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground hover:text-accent transition-colors">Message us on WhatsApp</a>
+                </div>
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Studio</p>
+                  <p className="text-sm text-foreground">44 Jan Smuts Avenue<br />Rosebank, Johannesburg<br />South Africa</p>
+                </div>
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Follow</p>
+                  <div className="flex gap-4 text-sm">
+                    <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">Instagram</a>
+                    <a href="https://facebook.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">Facebook</a>
+                    <a href="https://pinterest.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">Pinterest</a>
+                    <a href="https://linkedin.com/company/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">LinkedIn</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Form */}
+            <div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             <input
@@ -111,6 +146,8 @@ const Contact = () => {
               </button>
             </div>
           </form>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
