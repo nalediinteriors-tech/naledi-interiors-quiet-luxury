@@ -7,6 +7,11 @@ import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project6 from "@/assets/project-6.jpg";
+import review1 from "@/assets/review-1.jpg";
+import review2 from "@/assets/review-2.jpg";
+import review3 from "@/assets/review-3.jpg";
+import review4 from "@/assets/review-4.jpg";
+import review5 from "@/assets/review-5.jpg";
 
 const projects = [
   { image: project1, name: "The Linden Residence", desc: "A sanctuary of layered calm in the heart of the city." },
@@ -120,6 +125,41 @@ const Index = () => (
               <span className="text-xs text-accent tracking-[0.2em] font-sans">{s.num}</span>
               <h3 className="font-serif text-lg mt-2 mb-3 text-foreground">{s.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Reviews Marquee */}
+    <section className="py-24 lg:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+        <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6 text-center">Client Words</p>
+        <h2 className="font-serif text-2xl md:text-3xl text-center text-foreground">What our clients say.</h2>
+      </div>
+      <div className="relative">
+        <div className="flex animate-marquee w-max gap-8">
+          {[
+            { img: review1, name: "Amara Osei", role: "Homeowner, Johannesburg", quote: "Naledi didn't just design our home — they understood how we wanted to feel in it. Every room has intention." },
+            { img: review2, name: "David Hartley", role: "Property Developer", quote: "The level of precision and spatial awareness is unmatched. Our buyers notice the difference immediately." },
+            { img: review3, name: "Priya Naidoo", role: "Homeowner, Cape Town", quote: "Working with Naledi felt like a conversation, not a transaction. The result is a space that truly reflects us." },
+            { img: review4, name: "Sipho Mthembu", role: "Architect & Collaborator", quote: "Their understanding of material and proportion elevates every project. A rare level of discipline in this industry." },
+            { img: review5, name: "Catherine Voss", role: "Homeowner, Pretoria", quote: "Restrained, thoughtful, and deeply personal. Our home feels like it was always meant to be this way." },
+            { img: review1, name: "Amara Osei", role: "Homeowner, Johannesburg", quote: "Naledi didn't just design our home — they understood how we wanted to feel in it. Every room has intention." },
+            { img: review2, name: "David Hartley", role: "Property Developer", quote: "The level of precision and spatial awareness is unmatched. Our buyers notice the difference immediately." },
+            { img: review3, name: "Priya Naidoo", role: "Homeowner, Cape Town", quote: "Working with Naledi felt like a conversation, not a transaction. The result is a space that truly reflects us." },
+            { img: review4, name: "Sipho Mthembu", role: "Architect & Collaborator", quote: "Their understanding of material and proportion elevates every project. A rare level of discipline in this industry." },
+            { img: review5, name: "Catherine Voss", role: "Homeowner, Pretoria", quote: "Restrained, thoughtful, and deeply personal. Our home feels like it was always meant to be this way." },
+          ].map((r, i) => (
+            <div key={i} className="flex-shrink-0 w-[380px] bg-secondary p-8">
+              <p className="font-serif text-base text-foreground leading-relaxed mb-6 italic">"{r.quote}"</p>
+              <div className="flex items-center gap-4">
+                <img src={r.img} alt={r.name} loading="lazy" width={48} height={48} className="w-12 h-12 rounded-full object-cover" />
+                <div>
+                  <p className="text-sm text-foreground font-medium">{r.name}</p>
+                  <p className="text-xs text-muted-foreground">{r.role}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
