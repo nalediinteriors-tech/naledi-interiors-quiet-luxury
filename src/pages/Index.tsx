@@ -126,8 +126,30 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Who This Is For */}
+    {/* Values */}
     <section className="py-24 lg:py-32 bg-secondary">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6 text-center">Our Values</p>
+        <h2 className="font-serif text-2xl md:text-3xl mb-16 text-center text-foreground">What guides every decision.</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {[
+            { title: "Integrity", desc: "Honest material choices, transparent processes, and designs that serve people — not ego." },
+            { title: "Precision", desc: "Every proportion, joint, and finish is considered. Nothing is left to chance." },
+            { title: "Restraint", desc: "Knowing what to leave out is as important as knowing what to include." },
+            { title: "Longevity", desc: "We design for decades, not seasons. Timeless over trendy, always." },
+          ].map((v) => (
+            <div key={v.title}>
+              <div className="w-8 h-px bg-accent mb-5" />
+              <h3 className="font-serif text-lg text-foreground mb-3">{v.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Who This Is For */}
+    <section className="py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
         <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Who This Is For</p>
         <p className="font-serif text-2xl md:text-3xl text-foreground leading-relaxed">
