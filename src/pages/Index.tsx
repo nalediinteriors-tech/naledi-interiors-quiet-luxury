@@ -198,18 +198,44 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Final CTA */}
+    {/* Contact Details + Final CTA */}
     <section className="py-24 lg:py-32">
-      <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
-        <p className="font-serif text-2xl md:text-3xl text-foreground mb-10">
-          Begin your project with clarity and intention.
-        </p>
-        <Link
-          to="/contact"
-          className="inline-block bg-primary text-primary-foreground text-xs tracking-[0.15em] uppercase px-10 py-4 hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
-        >
-          Schedule a Consultation
-        </Link>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="font-serif text-2xl md:text-3xl text-foreground mb-10">
+              Begin your project with clarity and intention.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-block bg-primary text-primary-foreground text-xs tracking-[0.15em] uppercase px-10 py-4 hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
+          <div className="space-y-6">
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Email</p>
+              <p className="text-sm text-foreground">hello@nalediinteriors.com</p>
+            </div>
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Phone</p>
+              <p className="text-sm text-foreground">+27 12 345 6789</p>
+            </div>
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Studio</p>
+              <p className="text-sm text-foreground">44 Jan Smuts Avenue, Rosebank, Johannesburg</p>
+            </div>
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Follow</p>
+              <div className="flex gap-4 text-sm">
+                <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">Instagram</a>
+                <a href="https://facebook.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">Facebook</a>
+                <a href="https://pinterest.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-accent transition-colors">Pinterest</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </Layout>
