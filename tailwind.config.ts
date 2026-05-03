@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         serif: ["'Playfair Display'", "Georgia", "serif"],
-        sans: ["'Inter'", "system-ui", "sans-serif"],
+        sans: ["'Montserrat'", "'Inter'", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -43,6 +43,16 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        terracotta: {
+          DEFAULT: "hsl(var(--terracotta))",
+          foreground: "hsl(var(--terracotta-foreground))",
+        },
+        bronze: {
+          DEFAULT: "hsl(var(--bronze))",
+          foreground: "hsl(var(--bronze-foreground))",
+        },
+        charcoal: "hsl(var(--obsidian-charcoal))",
+        ecru: "hsl(var(--ecru-linen))",
         sage: {
           DEFAULT: "hsl(var(--sage))",
           foreground: "hsl(var(--sage-foreground))",

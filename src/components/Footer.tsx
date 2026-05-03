@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
+import logo from "@/assets/logo/logo.png";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
-          <h3 className="font-serif text-lg tracking-wider mb-4">NALEDI INTERIORS</h3>
+          <img src={logo} alt="Naledi Interiors" className="h-10 w-auto mb-4" />
           <p className="text-sm text-primary-foreground/60 leading-relaxed max-w-xs mb-6">
             Interior design guided by human behavior, intention, and refined execution.
           </p>
@@ -47,19 +48,16 @@ const Footer = () => (
         <div>
           <h4 className="text-xs tracking-[0.2em] uppercase mb-4">Contact</h4>
           <div className="space-y-3 text-sm text-primary-foreground/60">
-            <p>hello@nalediinteriors.com</p>
-            <p>+27 12 345 6789</p>
-            <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" className="block hover:text-primary-foreground transition-colors">
-              WhatsApp
+            <a href="mailto:ni@naledi.com" className="block hover:text-primary-foreground transition-colors">ni@naledi.com</a>
+            <a href="https://wa.me/26778172746" target="_blank" rel="noopener noreferrer" className="block hover:text-primary-foreground transition-colors">
+              +267 78172746
             </a>
           </div>
         </div>
         <div>
           <h4 className="text-xs tracking-[0.2em] uppercase mb-4">Studio</h4>
           <p className="text-sm text-primary-foreground/60 leading-relaxed">
-            44 Jan Smuts Avenue<br />
-            Rosebank, Johannesburg<br />
-            South Africa
+            Gaborone, Botswana
           </p>
         </div>
       </div>

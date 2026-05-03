@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import contactHero from "@/assets/projects-new/Fb banner supporting iii.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,35 +29,47 @@ const Contact = () => {
 
   return (
     <Layout>
+      {/* Hero Section */}
+      <section className="relative h-[60vh] min-h-[400px] flex items-end">
+        <img
+          src={contactHero}
+          alt="Elegant interior space"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-charcoal/30" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-12 w-full">
+          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-white/70 mb-4">Contact</p>
+          <h1 className="font-serif text-3xl md:text-5xl text-white leading-tight">
+            Start a conversation.
+          </h1>
+        </div>
+      </section>
+
       <section className="py-24 lg:py-32">
         <div className="max-w-5xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             {/* Left: Contact details */}
             <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Contact</p>
-              <h1 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-6">
-                Start a conversation.
-              </h1>
+              <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-6">Get in Touch</p>
+              <h2 className="font-serif text-2xl md:text-3xl text-foreground leading-tight mb-6">
+                We would love to hear from you.
+              </h2>
               <p className="text-sm text-muted-foreground mb-12">
                 Selected clients will be invited to a consultation.
               </p>
 
               <div className="space-y-8">
                 <div>
-                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Email</p>
-                  <a href="mailto:hello@nalediinteriors.com" className="text-sm text-foreground hover:text-accent transition-colors">hello@nalediinteriors.com</a>
+                  <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Email</p>
+                  <a href="mailto:ni@naledi.com" className="text-base text-foreground font-sans hover:text-bronze transition-colors">ni@naledi.com</a>
                 </div>
                 <div>
-                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Phone</p>
-                  <a href="tel:+27123456789" className="text-sm text-foreground hover:text-accent transition-colors">+27 12 345 6789</a>
+                  <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Phone / WhatsApp</p>
+                  <a href="https://wa.me/26778172746" target="_blank" rel="noopener noreferrer" className="text-base text-foreground font-sans hover:text-bronze transition-colors">+267 78172746</a>
                 </div>
                 <div>
-                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">WhatsApp</p>
-                  <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground hover:text-accent transition-colors">Message us on WhatsApp</a>
-                </div>
-                <div>
-                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Studio</p>
-                  <p className="text-sm text-foreground">44 Jan Smuts Avenue<br />Rosebank, Johannesburg<br />South Africa</p>
+                  <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Studio</p>
+                  <p className="text-base text-foreground font-sans">Gaborone, Botswana</p>
                 </div>
                 <div>
                   <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Follow</p>

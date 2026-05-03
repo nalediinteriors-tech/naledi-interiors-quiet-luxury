@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,41 +6,51 @@
 
 @layer base {
   :root {
-    --background: 30 33% 95%;
-    --foreground: 0 0% 10%;
+    /* Brand Colors from Design Board */
+    --ecru-linen: 40 33% 95%;           /* #F5F0E8 - Substrate/Background */
+    --obsidian-charcoal: 0 0% 16%;     /* #2A2A2A - Primary/Border */
+    --terracotta-rose: 8 37% 63%;      /* #C4847B - Secondary Accent */
+    --satin-bronze: 30 35% 48%;        /* #A67C52 - Tertiary Accent/CTA */
+    --luxe-bronze-foil: 30 35% 55%;    /* Metallic accent */
 
-    --card: 30 20% 90%;
-    --card-foreground: 0 0% 10%;
+    --background: 40 33% 95%;
+    --foreground: 0 0% 16%;
 
-    --popover: 30 33% 95%;
-    --popover-foreground: 0 0% 10%;
+    --card: 40 30% 92%;
+    --card-foreground: 0 0% 16%;
 
-    --primary: 0 0% 10%;
-    --primary-foreground: 30 33% 95%;
+    --popover: 40 33% 95%;
+    --popover-foreground: 0 0% 16%;
 
-    --secondary: 30 20% 90%;
-    --secondary-foreground: 0 0% 10%;
+    --primary: 0 0% 16%;
+    --primary-foreground: 40 33% 95%;
 
-    --muted: 30 20% 90%;
-    --muted-foreground: 20 4% 41%;
+    --secondary: 40 30% 92%;
+    --secondary-foreground: 0 0% 16%;
 
-    --accent: 32 38% 63%;
-    --accent-foreground: 0 0% 10%;
+    --muted: 40 25% 90%;
+    --muted-foreground: 20 8% 45%;
 
-    --sage: 110 10% 66%;
-    --sage-foreground: 0 0% 10%;
+    --accent: 30 35% 48%;
+    --accent-foreground: 40 33% 95%;
+
+    --terracotta: 8 37% 63%;
+    --terracotta-foreground: 0 0% 16%;
+
+    --bronze: 30 35% 48%;
+    --bronze-foreground: 40 33% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 82%;
-    --input: 30 15% 82%;
-    --ring: 32 38% 63%;
+    --border: 0 0% 16%;
+    --input: 40 20% 88%;
+    --ring: 30 35% 48%;
 
-    --radius: 0.25rem;
+    --radius: 0px;
 
     --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif;
 
     --sidebar-background: 30 20% 90%;
     --sidebar-foreground: 0 0% 10%;
@@ -65,4 +75,13 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
   }
+}
+
+/* Hide scrollbar for horizontal scroll sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

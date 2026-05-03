@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo/logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -16,8 +17,8 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
-        <Link to="/" className="font-serif text-xl tracking-wider text-foreground">
-          NALEDI INTERIORS
+        <Link to="/" className="flex items-center justify-center border-2 border-bronze w-16 h-16">
+          <img src={logo} alt="Naledi Interiors" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop */}
