@@ -69,7 +69,7 @@ const Index = () => {
         <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           <Link
             to="/contact"
-            className="inline-block bg-bronze text-white text-[11px] tracking-[0.2em] uppercase px-10 py-4 hover:bg-terracotta transition-colors duration-300 font-sans font-medium"
+            className="inline-block bg-terracotta text-white text-[11px] tracking-[0.2em] uppercase px-10 py-4 hover:bg-bronze transition-colors duration-300 font-sans font-medium"
           >
             Book a Consultation
           </Link>
@@ -84,7 +84,7 @@ const Index = () => {
       {/* Diagonal accent from logo motif - Concept 2 */}
       <div className="absolute top-0 right-0 w-32 h-full overflow-hidden pointer-events-none opacity-30">
         <div className="absolute top-20 right-0 w-1 h-40 bg-terracotta transform -rotate-12 origin-top" />
-        <div className="absolute top-32 right-8 w-0.5 h-24 bg-bronze transform -rotate-12 origin-top" />
+        <div className="absolute top-32 right-8 w-0.5 h-24 bg-terracotta/50 transform -rotate-12 origin-top" />
       </div>
     </section>
 
@@ -102,7 +102,7 @@ const Index = () => {
                 className="w-full h-full object-cover"
               />
               {/* Subtle bronze corner accent */}
-              <div className="absolute bottom-0 right-0 w-24 h-24 bg-bronze/10" />
+              <div className="absolute bottom-0 right-0 w-24 h-24 bg-terracotta/10" />
             </div>
           </div>
           
@@ -123,7 +123,7 @@ const Index = () => {
               <div className="space-y-6 pt-8 border-t border-border">
                 {pillars.map((p) => (
                   <div key={p.title} className="flex items-start gap-4">
-                    <div className="w-1.5 h-1.5 bg-bronze mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-terracotta mt-2 flex-shrink-0" />
                     <div>
                       <h4 className="font-serif text-base text-foreground mb-1">{p.title}</h4>
                     </div>
@@ -144,7 +144,7 @@ const Index = () => {
             <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Portfolio</p>
             <h2 className="font-serif text-2xl md:text-3xl text-foreground">Selected Work</h2>
           </div>
-          <Link to="/services" className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-bronze transition-colors hidden md:block">
+          <Link to="/services" className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-terracotta transition-colors hidden md:block">
             View All Projects
           </Link>
         </div>
@@ -164,10 +164,10 @@ const Index = () => {
               <div className="p-8 border-t border-border">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-serif text-base text-foreground mb-1">{p.name}</h3>
-                    <p className="text-xs text-muted-foreground font-sans font-light">{p.desc}</p>
+                    <h3 className="font-serif text-lg text-foreground mb-2">{p.name}</h3>
+                    <p className="text-sm text-muted-foreground font-sans font-light">{p.desc}</p>
                   </div>
-                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-bronze">{p.location}</span>
+                  <span className="font-sans text-xs tracking-[0.2em] uppercase text-terracotta">{p.location}</span>
                 </div>
               </div>
             </div>
@@ -202,7 +202,7 @@ const Index = () => {
             { img: review5, name: "Catherine Voss", role: "Homeowner, Pretoria", quote: "Restrained, thoughtful, and deeply personal. Our home feels like it was always meant to be this way." },
           ].map((r, i) => (
             <div key={i} className="flex-shrink-0 w-[380px] bg-background p-10">
-              <div className="w-8 h-px bg-bronze mb-6" />
+              <div className="w-8 h-px bg-terracotta mb-6" />
               <p className="font-serif text-base text-foreground leading-relaxed mb-6 italic">"{r.quote}"</p>
               <div className="flex items-center gap-4">
                 <img src={r.img} alt={r.name} loading="lazy" width={48} height={48} className="w-12 h-12 rounded-full object-cover" />
@@ -218,7 +218,7 @@ const Index = () => {
     </section>
 
     {/* CONCEPT 1: Values - Split-screen with image and accordion */}
-    <section className="py-16 lg:py-20 bg-secondary">
+    <section className="py-16 lg:py-20 bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div className="mb-12 lg:mb-16">
@@ -247,19 +247,19 @@ const Index = () => {
                 onClick={() => setActiveValue(i)}
                 className={`border-l-2 p-6 cursor-pointer transition-all duration-500 ${
                   i === activeValue 
-                    ? 'border-bronze bg-secondary' 
-                    : 'border-border hover:border-bronze/30'
+                    ? 'border-terracotta bg-secondary' 
+                    : 'border-border hover:border-terracotta/30'
                 }`}
               >
                 <div className="flex items-start gap-4">
                   <span className={`font-serif text-2xl transition-colors duration-300 ${
-                    i === activeValue ? 'text-bronze' : 'text-bronze/30'
+                    i === activeValue ? 'text-terracotta' : 'text-terracotta/30'
                   }`}>{v.num}</span>
                   <div className="flex-1">
                     <h3 className={`font-serif text-xl transition-colors duration-300 mb-3 ${
                       i === activeValue ? 'text-foreground' : 'text-muted-foreground'
                     }`}>{v.title}</h3>
-                    <div className="w-12 h-px bg-bronze mb-3" />
+                    <div className="w-12 h-px bg-terracotta mb-3" />
                     <p className="text-muted-foreground leading-relaxed">{v.desc}</p>
                   </div>
                 </div>
@@ -296,7 +296,7 @@ const Index = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-bronze text-white text-[11px] tracking-[0.2em] uppercase px-14 py-5 hover:bg-terracotta transition-colors duration-300 font-sans font-medium"
+            className="inline-block bg-terracotta text-white text-[11px] tracking-[0.2em] uppercase px-14 py-5 hover:bg-bronze transition-colors duration-300 font-sans font-medium"
           >
             Schedule a Consultation
           </Link>
