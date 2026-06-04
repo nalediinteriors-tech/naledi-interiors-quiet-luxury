@@ -7,6 +7,7 @@ const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/portfolio", label: "Portfolio" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -49,7 +50,7 @@ const Navigation = () => {
             </Link>
           ))}
           <a
-            href="https://wa.me/26778172746"
+            href="https://wa.me/26773293302"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm tracking-[0.2em] uppercase text-terracotta hover:text-bronze transition-colors duration-300"
@@ -84,7 +85,7 @@ const Navigation = () => {
             </Link>
           ))}
           <a
-            href="https://wa.me/26778172746"
+            href="https://wa.me/26773293302"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}

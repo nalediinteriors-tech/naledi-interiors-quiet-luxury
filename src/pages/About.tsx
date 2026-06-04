@@ -41,13 +41,13 @@ const About = () => (
               {/* Bronze accent line */}
               <div className="absolute bottom-0 left-0 w-full h-1 bg-bronze" />
             </div>
-            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-4">Naledi Mokoena, Founder</p>
+            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-4">Tshireletso Atwine, Founder</p>
           </div>
 
           {/* Right: Editorial text blocks */}
           <div className="lg:col-span-7 space-y-10">
             <div className="border-l-2 border-bronze pl-6">
-              <h3 className="font-serif text-lg text-foreground mb-3">Founder & Creative Director</h3>
+              <h3 className="font-serif text-lg text-foreground mb-3">Tshireletso Atwine — Founder & Creative Director</h3>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Naledi Interiors was founded on the principle that space shapes behavior. Our creative director brings a disciplined approach to residential and commercial interiors — one informed by environmental psychology, material science, and a deep respect for how physical environments influence cognitive and emotional well-being.
               </p>
@@ -84,9 +84,9 @@ const About = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { name: "Naledi Mokoena", role: "Founder & Creative Director", desc: "Spatial strategy, environmental psychology, and design vision." },
-            { name: "Thabo Khumalo", role: "Senior Interior Designer", desc: "Material specification, spatial planning, and client liaison." },
-            { name: "Lerato Ndaba", role: "Project Coordinator", desc: "Procurement management, timeline oversight, and execution." },
+            { name: "Lise", role: "Senior Interior Designer", desc: "Material specification, spatial planning, and client liaison." },
+            { name: "Daphney", role: "Project Coordinator", desc: "Procurement management, timeline oversight, and execution." },
+            { name: "Abijah", role: "Design Associate", desc: "Creative concepts, styling, and on-site project support." },
           ].map((member) => (
             <div key={member.name}>
               <div className="w-full aspect-[3/4] bg-border/50 mb-5" />

@@ -157,7 +157,7 @@ const Contact = () => {
             {/* Contact details row */}
             <div className="flex flex-wrap justify-center gap-8 mb-10 pb-10 border-b border-border">
               <a href="mailto:ni@naledi.com" className="text-foreground hover:text-bronze transition-colors text-base">ni@naledi.com</a>
-              <a href="https://wa.me/26778172746" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-bronze transition-colors text-base">+267 78172746</a>
+              <a href="https://wa.me/26773293302" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-bronze transition-colors text-base">+267 73293302</a>
               <span className="text-muted-foreground text-base">Gaborone, Botswana</span>
             </div>
 

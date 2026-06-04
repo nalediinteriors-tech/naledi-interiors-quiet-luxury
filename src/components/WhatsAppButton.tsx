@@ -3,7 +3,7 @@ import { MessageCircle, X } from "lucide-react";
 
 const WhatsAppButton = () => {
   const [chatOpen, setChatOpen] = useState(false);
-  const phoneNumber = "27123456789";
+  const phoneNumber = "26773293302";
   const defaultMessage = "Hello, I'm interested in learning more about Naledi Interiors.";
 
   return (

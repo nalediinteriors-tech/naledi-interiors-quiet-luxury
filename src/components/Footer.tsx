@@ -46,8 +46,8 @@ const Footer = () => (
           <h4 className="text-xs tracking-[0.2em] uppercase mb-4">Contact</h4>
           <div className="space-y-3 text-sm text-primary-foreground/60">
             <a href="mailto:ni@naledi.com" className="block hover:text-primary-foreground transition-colors">ni@naledi.com</a>
-            <a href="https://wa.me/26778172746" target="_blank" rel="noopener noreferrer" className="block hover:text-primary-foreground transition-colors">
-              +267 78172746
+            <a href="https://wa.me/26773293302" target="_blank" rel="noopener noreferrer" className="block hover:text-primary-foreground transition-colors">
+              +267 73293302
             </a>
           </div>
         </div>

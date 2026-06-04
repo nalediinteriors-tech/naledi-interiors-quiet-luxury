@@ -115,7 +115,7 @@ const ExitIntentPopup = () => {
             </a>
             
             <a
-              href="https://wa.me/26778172746"
+              href="https://wa.me/26773293302"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 text-muted-foreground hover:text-terracotta transition-colors group"
