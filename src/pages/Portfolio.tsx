@@ -8,7 +8,10 @@ import {
   rooms,
   resFilters,
   companies,
+  renders,
+  renderFilters,
   type Room,
+  type Render,
   type CorporateSpace,
   type Company,
   type Tone,
@@ -77,44 +80,44 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 // ---------------------------------------------------------------------------
 type LightboxItem =
   | { kind: "residential"; room: Room }
-  | { kind: "corporate"; space: CorporateSpace; company: Company };
+  | { kind: "corporate"; space: CorporateSpace; company: Company }
+  | { kind: "render"; render: Render };
 
 // ---------------------------------------------------------------------------
-// Tonal placeholder (used inside cards when no real image is set)
+// Shared "image coming soon" face — matches the warm linen placeholder design
 // ---------------------------------------------------------------------------
-function CardPlaceholder({ tone, label }: { tone: Tone; label: string }) {
+function ComingSoonFace() {
   return (
-    <div
-      className={`absolute inset-0 ${toneClass[tone]} flex items-end`}
-      style={tonePattern}
-    >
-      <span className="font-mono text-[10px] tracking-wider text-foreground/40 uppercase p-3 leading-tight">
-        {label}
-      </span>
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3"
+      style={{ backgroundColor: "#EDE8DF" }}>
+      {/* Plus icon */}
+      <div className="relative w-5 h-5 opacity-40">
+        <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-[#9C8C7A]" />
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-[#9C8C7A]" />
+      </div>
+      <p className="font-sans text-[9px] tracking-[0.28em] uppercase text-[#9C8C7A]/70">
+        Image coming soon
+      </p>
     </div>
   );
 }
 
 // ---------------------------------------------------------------------------
+// Tonal placeholder (used inside cards when no real image is set)
+// ---------------------------------------------------------------------------
+function CardPlaceholder() {
+  return <ComingSoonFace />;
+}
+
+// ---------------------------------------------------------------------------
 // GridFiller — fills empty cells at the end of an incomplete last row
 // ---------------------------------------------------------------------------
-function GridFiller({ index }: { index: number }) {
-  const tone = fillerTones[index % fillerTones.length];
+function GridFiller() {
   return (
     <div className="bg-background flex flex-col">
       {/* Image area — same aspect ratio as real cards */}
-      <div
-        className={`relative aspect-[4/5] w-full ${toneClass[tone]} flex flex-col items-center justify-center gap-4`}
-        style={tonePattern}
-      >
-        {/* Bronze cross / plus icon */}
-        <div className="relative w-8 h-8 opacity-30">
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-bronze" />
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-bronze" />
-        </div>
-        <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-muted-foreground/60">
-          Image coming soon
-        </p>
+      <div className="relative aspect-[4/5] w-full">
+        <ComingSoonFace />
       </div>
       {/* Meta bar — same height/padding as real cards, kept blank */}
       <div className="px-5 py-5 border-t border-border flex items-center">
@@ -144,7 +147,7 @@ function ResCard({ room: r, index, onClick }: { room: Room; index: number; onCli
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
           ) : (
-            <CardPlaceholder tone={r.tone} label={`${r.room.toUpperCase()} · ${r.scene}`} />
+            <CardPlaceholder />
           )}
           {/* Card index */}
           <span className="absolute top-4 left-4 font-serif text-[13px] text-white/70 z-10 drop-shadow">
@@ -201,32 +204,37 @@ function CorpCard({
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
           ) : (
-            <CardPlaceholder tone={space.tone} label={`${space.room.toUpperCase()} · ${space.scene}`} />
+            <CardPlaceholder />
           )}
-          {/* Permanent bottom gradient over real photos */}
-          <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
           {/* Card index */}
           <span className="absolute top-4 left-4 font-serif text-[13px] text-white/70 z-20 drop-shadow">
             {String(index + 1).padStart(2, "0")}
           </span>
-          {/* Scene label — always visible at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 px-5 py-4 pointer-events-none">
-            <p className="font-sans text-[9px] tracking-[0.28em] uppercase text-white/60 leading-tight">
-              {space.scene}
-            </p>
-          </div>
-          {/* Hover overlay with detail text */}
-          <div className="absolute inset-0 bg-foreground/75 flex flex-col items-start justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-30">
-            <p className="font-sans text-[9px] tracking-[0.28em] uppercase text-terracotta mb-3">
-              {space.room}
-            </p>
-            <p className="font-serif text-white text-base leading-snug mb-4 max-w-[28ch]">
-              {space.detail}
-            </p>
-            <span className="border border-white/50 text-white text-[9px] tracking-[0.3em] uppercase px-5 py-2.5">
-              View Space
-            </span>
-          </div>
+          {/* Overlays only shown when a real image is present */}
+          {space.image && (
+            <>
+              {/* Bottom gradient */}
+              <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
+              {/* Scene label */}
+              <div className="absolute bottom-0 left-0 right-0 z-20 px-5 py-4 pointer-events-none">
+                <p className="font-sans text-[9px] tracking-[0.28em] uppercase text-white/60 leading-tight">
+                  {space.scene}
+                </p>
+              </div>
+              {/* Hover overlay with detail text */}
+              <div className="absolute inset-0 bg-foreground/75 flex flex-col items-start justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-30">
+                <p className="font-sans text-[9px] tracking-[0.28em] uppercase text-terracotta mb-3">
+                  {space.room}
+                </p>
+                <p className="font-serif text-white text-base leading-snug mb-4 max-w-[28ch]">
+                  {space.detail}
+                </p>
+                <span className="border border-white/50 text-white text-[9px] tracking-[0.3em] uppercase px-5 py-2.5">
+                  View Space
+                </span>
+              </div>
+            </>
+          )}
         </div>
         {/* Meta bar */}
         <div className="px-5 py-5 flex items-start justify-between gap-3 border-t border-border">
@@ -236,6 +244,56 @@ function CorpCard({
           </div>
           <span className="font-sans text-[10px] tracking-[0.18em] uppercase text-muted-foreground whitespace-nowrap pt-1">
             {company.loc.split(",")[0]}
+          </span>
+        </div>
+      </button>
+    </Reveal>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Render card
+// ---------------------------------------------------------------------------
+function RenderCard({ render: r, index, onClick }: { render: Render; index: number; onClick: () => void }) {
+  return (
+    <Reveal>
+      <button
+        onClick={onClick}
+        className="group w-full bg-background text-left flex flex-col cursor-pointer border-none"
+      >
+        <div className="relative overflow-hidden aspect-[4/5] w-full">
+          <img
+            src={r.image}
+            alt={r.title}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          {/* Bottom gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/55 to-transparent z-10 pointer-events-none" />
+          {/* Index */}
+          <span className="absolute top-4 left-4 font-serif text-[13px] text-white/70 z-20 drop-shadow">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          {/* Scene label */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 px-5 py-4 pointer-events-none">
+            <p className="font-sans text-[9px] tracking-[0.28em] uppercase text-white/60 leading-tight">
+              {r.scene}
+            </p>
+          </div>
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-foreground/65 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-30">
+            <span className="border border-white/60 text-white text-[10px] tracking-[0.3em] uppercase px-6 py-3">
+              View Render
+            </span>
+          </div>
+        </div>
+        {/* Meta bar */}
+        <div className="px-5 py-5 flex items-start justify-between gap-3 border-t border-border">
+          <div>
+            <p className="font-sans text-[10px] tracking-[0.24em] uppercase text-terracotta mb-2">{r.cat}</p>
+            <h3 className="font-serif text-lg leading-tight">{r.title}</h3>
+          </div>
+          <span className="font-sans text-[10px] tracking-[0.18em] uppercase text-muted-foreground whitespace-nowrap pt-1">
+            Render
           </span>
         </div>
       </button>
@@ -288,7 +346,7 @@ function Lightbox({
       .filter((s) => s.projectKey === r.projectKey && s.room !== r.room)
       .slice(0, 5)
       .map((s) => ({ room: s.room, tone: s.tone, image: s.image, item: { kind: "residential" as const, room: s } }));
-  } else {
+  } else if (item.kind === "corporate") {
     const { space, company } = item;
     title = company.name;
     loc = company.loc;
@@ -301,6 +359,18 @@ function Lightbox({
       .filter((s) => s.room !== space.room)
       .slice(0, 5)
       .map((s) => ({ room: s.room, tone: s.tone, image: s.image, item: { kind: "corporate" as const, space: s, company } }));
+  } else {
+    const r = item.render;
+    title = r.title;
+    loc = "Visualisation";
+    desc = r.scene;
+    roomLabel = r.cat;
+    tone = r.tone;
+    imgSrc = r.image;
+    siblings = renders
+      .filter((s) => s.title !== r.title)
+      .slice(0, 5)
+      .map((s) => ({ room: s.title, tone: s.tone, image: s.image, item: { kind: "render" as const, render: s } }));
   }
 
   return (
@@ -381,17 +451,28 @@ function Lightbox({
 // Main Portfolio page
 // ---------------------------------------------------------------------------
 const Portfolio = () => {
-  const [activeTab, setActiveTab] = useState<"residential" | "corporate">("residential");
+  const [activeTab, setActiveTab] = useState<"residential" | "corporate" | "renders">("residential");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [activeRenderFilter, setActiveRenderFilter] = useState("all");
   const [lightboxItem, setLightboxItem] = useState<LightboxItem | null>(null);
 
-  const filteredRooms = activeFilter === "all" ? rooms : rooms.filter((r) => r.cat === activeFilter);
+  // Imaged items first, placeholder items last within each grid
+  const sortImagesFirst = <T extends { image?: string }>(arr: T[]): T[] =>
+    [...arr.filter((i) => i.image), ...arr.filter((i) => !i.image)];
+
+  const filteredRooms = sortImagesFirst(
+    activeFilter === "all" ? rooms : rooms.filter((r) => r.cat === activeFilter)
+  );
+  const filteredRenders = sortImagesFirst(
+    activeRenderFilter === "all" ? renders : renders.filter((r) => r.cat === activeRenderFilter)
+  );
 
   const openLightbox = useCallback((item: LightboxItem) => setLightboxItem(item), []);
   const closeLightbox = useCallback(() => setLightboxItem(null), []);
 
   // Number of filler cells needed — computed at 3-col breakpoint (lg)
   const resFillCount = fillerCount(filteredRooms.length, 3);
+  const renderFillCount = fillerCount(filteredRenders.length, 3);
 
   return (
     <Layout>
@@ -415,7 +496,7 @@ const Portfolio = () => {
       <div className="sticky top-20 z-40 bg-background border-t border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex">
-            {(["residential", "corporate"] as const).map((tab, i) => (
+            {(["residential", "corporate", "renders"] as const).map((tab, i) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -476,7 +557,7 @@ const Portfolio = () => {
               ))}
               {/* Filler cells to complete the last row */}
               {Array.from({ length: resFillCount }).map((_, i) => (
-                <GridFiller key={`res-filler-${i}`} index={i} />
+                <GridFiller key={`res-filler-${i}`} />
               ))}
             </div>
           </section>
@@ -518,7 +599,7 @@ const Portfolio = () => {
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6"
                     style={{ gap: "1px", background: "hsl(var(--border))" }}
                   >
-                    {company.spaces.map((space, si) => (
+                    {sortImagesFirst(company.spaces).map((space, si) => (
                       <div key={space.room} className="bg-background">
                         <CorpCard
                           space={space}
@@ -530,12 +611,56 @@ const Portfolio = () => {
                     ))}
                     {/* Filler cells to complete the last row */}
                     {Array.from({ length: corpFillCount }).map((_, i) => (
-                      <GridFiller key={`corp-${ci}-filler-${i}`} index={company.spaces.length + i} />
+                      <GridFiller key={`corp-${ci}-filler-${i}`} />
                     ))}
                   </div>
                 </div>
               );
             })}
+          </section>
+        )}
+
+        {/* RENDERS */}
+        {activeTab === "renders" && (
+          <section className="pb-8">
+            {/* Filter chips */}
+            <div className="flex flex-wrap gap-2.5 pt-9 pb-2">
+              {renderFilters.map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => setActiveRenderFilter(f.id)}
+                  className={`font-sans text-[11px] tracking-[0.16em] uppercase px-5 py-3 border transition-all duration-300
+                    ${activeRenderFilter === f.id
+                      ? "bg-foreground border-foreground text-background"
+                      : "bg-transparent border-border text-muted-foreground hover:border-bronze hover:text-foreground"
+                    }`}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+
+            <p className="font-sans text-[11px] tracking-[0.16em] uppercase text-muted-foreground pt-6">
+              {filteredRenders.length} {filteredRenders.length === 1 ? "render" : "renders"}
+            </p>
+
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-7"
+              style={{ gap: "1px", background: "hsl(var(--border))" }}
+            >
+              {filteredRenders.map((r, i) => (
+                <div key={`${r.cat}-${r.title}-${i}`} className="bg-background">
+                  <RenderCard
+                    render={r}
+                    index={i}
+                    onClick={() => openLightbox({ kind: "render", render: r })}
+                  />
+                </div>
+              ))}
+              {Array.from({ length: renderFillCount }).map((_, i) => (
+                <GridFiller key={`render-filler-${i}`} />
+              ))}
+            </div>
           </section>
         )}
       </div>
