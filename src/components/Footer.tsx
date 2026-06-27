@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
-import logo from "@/assets/logo/logo.png";
+import NalediLogo from "./NalediLogo";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
-          <img src={logo} alt="Naledi Interiors" className="h-10 w-auto mb-4" />
+          <NalediLogo iconHeight={56} className="mb-6" dark />
           <p className="text-sm text-primary-foreground/60 leading-relaxed max-w-xs mb-6">
             Interior design guided by human behavior, intention, and refined execution.
           </p>
