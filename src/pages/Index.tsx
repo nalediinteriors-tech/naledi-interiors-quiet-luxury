@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import heroImage from "@/assets/projects-new/Fb banner Hero Main i.png";
-import philosophyBg from "@/assets/projects-new/004 Tlokweng Modern Haven ii.png";
-import project1 from "@/assets/projects-new/004 Tlokweng Modern Haven.png";
-import project2 from "@/assets/projects-new/004 lougne.png";
+import heroImage from "@/assets/projects-new/Fb banner Hero Main i.jpg";
+import philosophyBg from "@/assets/projects-new/004 Tlokweng Modern Haven ii.jpg";
+import project1 from "@/assets/projects-new/004 Tlokweng Modern Haven.jpg";
+import project2 from "@/assets/projects-new/004 lougne.jpg";
 import project3 from "@/assets/projects-new/Modern Classic Mansion (1).jpg";
 import project4 from "@/assets/projects-new/Makindye Walk in closet i.jpg";
-import project5 from "@/assets/projects-new/bedroom.png";
+import project5 from "@/assets/projects-new/bedroom.jpg";
 import project6 from "@/assets/projects-new/Makindye speakeasy (1).jpg";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
@@ -55,6 +55,7 @@ const Index = () => {
         src={heroImage}
         alt="Refined luxury interior living room with natural textures"
         className="absolute inset-0 w-full h-full object-cover"
+        fetchpriority="high"
         width={1920}
         height={1080}
       />

@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
-import servicesHero from "@/assets/projects-new/Modern Classic Mansion ii.png";
+import servicesHero from "@/assets/projects-new/Modern Classic Mansion ii.jpg";
 
 const services = [
   {
@@ -50,6 +50,7 @@ const Services = () => (
         src={servicesHero}
         alt="Luxury interior design"
         className="absolute inset-0 w-full h-full object-cover"
+        fetchpriority="high"
       />
       <div className="absolute inset-0 bg-charcoal/30" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-12 w-full">

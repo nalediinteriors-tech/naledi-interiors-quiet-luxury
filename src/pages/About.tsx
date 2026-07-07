@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import aboutHero from "@/assets/projects-new/Fb banner supporting ii.png";
+import aboutHero from "@/assets/projects-new/Fb banner supporting ii.jpg";
 
 const About = () => (
   <Layout>
@@ -9,6 +9,7 @@ const About = () => (
         src={aboutHero}
         alt="Elegant interior design"
         className="absolute inset-0 w-full h-full object-cover"
+        fetchpriority="high"
       />
       <div className="absolute inset-0 bg-charcoal/30" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-12 w-full">

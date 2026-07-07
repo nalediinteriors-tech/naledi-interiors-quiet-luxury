@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 import Layout from "@/components/Layout";
-import portfolioHero from "@/assets/projects-new/Fb banner Hero Main i.png";
+import portfolioHero from "@/assets/projects-new/Fb banner Hero Main i.jpg";
 import {
   projects,
   rooms,
@@ -484,6 +484,7 @@ const Portfolio = () => {
           src={portfolioHero}
           alt="Naledi Interiors portfolio"
           className="absolute inset-0 w-full h-full object-cover"
+          fetchpriority="high"
         />
         <div className="absolute inset-0 bg-charcoal/30" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-12 w-full">
