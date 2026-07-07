@@ -5,6 +5,64 @@ Format: `[YYYY-MM-DD] — Description`
 
 ---
 
+## [2026-07-07]
+
+### Portfolio — Image Audit & Correctness
+- Wiped and fully rebuilt `src/assets/residential/` from scratch
+- Every image now traced by MD5 hash to its exact source subfolder in the authoritative download folder
+- 31/31 residential + dermatome-new files verified — zero mismatches, zero cross-project contamination
+- Strict project → country mapping enforced: Botswana images stay in Botswana projects, Uganda images stay in Uganda projects
+- Previous wrong assignments fixed:
+  - `bedroom-suite-manor-i/ii` were Bougie Blush photos incorrectly wired to Manor — corrected
+  - `bedroom-master-lakefront-ii` was a Modern Haven photo incorrectly wired to Lake Front Tranquility — corrected
+  - Several pre-existing "NO MATCH" files of unknown origin removed entirely
+
+### Portfolio — New Projects Added
+- **Bougie Blush** (Tlokweng, Botswana): 1 lounge, 2 bedrooms
+- **Restorative by Design** (Najjera, Uganda): 1 bathroom
+- **Kids Bedrooms** (Uganda): 4 bedrooms
+- All wired to real verified images from source folder
+
+### Portfolio — New Images Integrated
+- **Luxe, Modern Manor**: added 4 lounges, 1 bedroom, 3 dining, 2 dressing rooms (all from Uganda source)
+- **Lake Front Tranquility**: added 1 bedroom, 1 dining
+- **Softened Grandeur**: added 1 lounge, 1 dining
+- **Morning Light Diva**: added 1 dressing image (replaces placeholder)
+- **Dermatome Skin Clinic**: added 5 new July 2026 images alongside original set (`dermatome-new-i` through `v`)
+
+### Portfolio — Renders Section Expanded
+- Added 4 new bedroom renders (x–xiii), 7 new bathroom renders (v–xi)
+- Added 3 new render categories with filter tabs: **Dining**, **Dressing**, **Kitchens**
+- Render sibling thumbnails ("More in this category") now correctly filter by category — previously showed renders from all categories
+
+### Portfolio — Lightbox Fix
+- "More from this project" thumbnails now strictly scoped to the current project's `projectKey`
+- Render siblings label changed to "More in this category" (renders are not tied to a named project)
+
+### Image Optimisation
+- Compressed all portfolio images using `sharp` + mozjpeg (quality 80–82)
+- Converted 3 oversized PNGs to JPEG:
+  - `bedroom-lakefront-i.png` 2,084 KB → 151 KB (−93%)
+  - `lounge-grandeur-i.png` 2,503 KB → 133 KB (−95%)
+  - `dining-grandeur-i.png` 2,293 KB → 144 KB (−94%)
+- Re-compressed 15 JPEGs that exceeded 150 KB
+- All portfolio images now ≤ 160 KB; total portfolio image payload reduced by ~60%
+- Added `scripts/compress-images.mjs` as a reusable compression utility
+- Updated `portfolioData.ts` imports for the 3 PNG→JPG conversions
+
+### Favicon
+- Removed Lovable's `public/favicon.ico` via `git rm`
+- Added `public/favicon.png` (Naledi logo) as the site favicon
+- Updated `index.html`: icon, apple-touch-icon, OG image, and Twitter image all point to `/favicon.png`
+- Removed all Lovable-branded meta tags
+
+### Social Links
+- Facebook updated to `https://www.facebook.com/nalediinteriorsUganda` (all 3 locations: Footer, Contact, ExitIntentPopup)
+- Fixed typo in ExitIntentPopup: `naledinteriors` → `nalediinteriorsUganda`
+- LinkedIn updated to `https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all` (all 3 locations)
+
+---
+
 ## [2026-06-04]
 
 ### Contact
@@ -63,8 +121,6 @@ Format: `[YYYY-MM-DD] — Description`
 
 - [ ] Add real founder portrait (`founder-tshireletso.jpg` — 900×1200px, 3:4)
 - [ ] Add team photos: `team-lise.jpg`, `team-daphney.jpg`, `team-abijah.jpg` (600×800px, 3:4)
-- [ ] Replace residential portfolio placeholders with real project images
 - [ ] Replace Apex corporate placeholders with real images
 - [ ] Replace Dermatome "Skin Bar" placeholder with final photo
-- [ ] Update residential project names/descriptions when confirmed
 - [ ] Wire up contact form submission (Netlify Forms or EmailJS)

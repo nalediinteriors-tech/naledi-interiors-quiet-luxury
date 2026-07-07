@@ -352,8 +352,8 @@ const Contact = () => {
           {/* Social links */}
           <div className="flex justify-center gap-8 mt-10">
             <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs tracking-[0.2em] uppercase">Instagram</a>
-            <a href="https://www.linkedin.com/company/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs tracking-[0.2em] uppercase">LinkedIn</a>
-            <a href="https://facebook.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs tracking-[0.2em] uppercase">Facebook</a>
+            <a href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs tracking-[0.2em] uppercase">LinkedIn</a>
+            <a href="https://www.facebook.com/nalediinteriorsUganda" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs tracking-[0.2em] uppercase">Facebook</a>
           </div>
 
           {/* FAQ Section - Below Form */}

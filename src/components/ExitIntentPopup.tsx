@@ -91,7 +91,7 @@ const ExitIntentPopup = () => {
             </a>
             
             <a
-              href="https://linkedin.com/company/naledi-interiors"
+              href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 text-muted-foreground hover:text-terracotta transition-colors group"
@@ -103,7 +103,7 @@ const ExitIntentPopup = () => {
             </a>
             
             <a
-              href="https://facebook.com/naledinteriors"
+              href="https://www.facebook.com/nalediinteriorsUganda"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 text-muted-foreground hover:text-terracotta transition-colors group"

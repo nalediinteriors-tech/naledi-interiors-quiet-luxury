@@ -332,6 +332,7 @@ function Lightbox({
   let imgSrc: string | undefined;
   // Each sibling carries its full LightboxItem so clicking it navigates correctly
   let siblings: { room: string; tone: Tone; image?: string; item: LightboxItem }[] = [];
+  let siblingsLabel = "More from this project";
 
   if (item.kind === "residential") {
     const r = item.room;
@@ -368,9 +369,10 @@ function Lightbox({
     tone = r.tone;
     imgSrc = r.image;
     siblings = renders
-      .filter((s) => s.title !== r.title)
+      .filter((s) => s.cat === r.cat && s.title !== r.title)
       .slice(0, 5)
       .map((s) => ({ room: s.title, tone: s.tone, image: s.image, item: { kind: "render" as const, render: s } }));
+    siblingsLabel = "More in this category";
   }
 
   return (
@@ -414,7 +416,7 @@ function Lightbox({
           {siblings.length > 0 && (
             <div className="mt-10">
               <p className="font-sans text-[11px] tracking-[0.24em] uppercase text-muted-foreground mb-5">
-                More from this project
+                {siblingsLabel}
               </p>
               <div className="flex gap-3 flex-wrap">
                 {siblings.map((s) => (

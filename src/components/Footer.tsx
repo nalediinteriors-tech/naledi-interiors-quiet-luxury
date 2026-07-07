@@ -15,10 +15,10 @@ const Footer = () => (
             <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Instagram">
               <Instagram size={18} />
             </a>
-            <a href="https://www.linkedin.com/company/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
-            <a href="https://facebook.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Facebook">
+            <a href="https://www.facebook.com/nalediinteriorsUganda" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Facebook">
               <Facebook size={18} />
             </a>
           </div>
@@ -66,10 +66,10 @@ const Footer = () => (
           <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
             Instagram
           </a>
-          <a href="https://www.linkedin.com/company/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
+          <a href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
             LinkedIn
           </a>
-          <a href="https://facebook.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
+          <a href="https://www.facebook.com/nalediinteriorsUganda" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
             Facebook
           </a>
         </div>
