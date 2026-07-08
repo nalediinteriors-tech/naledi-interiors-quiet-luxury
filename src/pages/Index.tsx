@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/projects-new/Fb banner Hero Main i.jpg";
-import philosophyBg from "@/assets/projects-new/004 Tlokweng Modern Haven ii.jpg";
+import philosophyBg from "@/assets/residential/bedrooms/bedroom-haven-i.jpg"; // Updated to single-window bedroom image per feedback
 import project1 from "@/assets/projects-new/004 Tlokweng Modern Haven.jpg";
 import project2 from "@/assets/projects-new/004 lougne.jpg";
 import project3 from "@/assets/projects-new/Modern Classic Mansion (1).jpg";
@@ -97,9 +97,9 @@ const Index = () => {
           {/* Left: Large Image */}
           <div className="lg:col-span-7">
             <div className="relative aspect-[4/5] overflow-hidden">
-              <img 
-                src={philosophyBg} 
-                alt="Interior detail" 
+              <img
+                src={philosophyBg}
+                alt="Elegant bedroom interior"
                 className="w-full h-full object-cover"
               />
               {/* Subtle bronze corner accent */}

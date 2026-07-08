@@ -5,6 +5,12 @@ Format: `[YYYY-MM-DD] — Description`
 
 ---
 
+## [2026-07-08]
+
+### Home Page
+- Replaced the philosophy-section background image in `src/pages/Index.tsx` with `src/assets/residential/bedrooms/bedroom-haven-i.jpg` after feedback that the previous image showed two bedroom windows instead of one
+- Updated image alt text to "Elegant bedroom interior"
+
 ## [2026-07-07]
 
 ### Portfolio — Image Audit & Correctness
