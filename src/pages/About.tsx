@@ -51,7 +51,7 @@ const About = () => {
         {/* Split layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left: Large portrait image placeholder */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
             <div className="relative aspect-[2/3] bg-secondary">
               <img
                 src={tshireImg}
@@ -70,24 +70,32 @@ const About = () => {
             <div className="border-l-2 border-bronze pl-6">
               <h3 className="font-serif text-lg text-foreground mb-3">Tshireletso Atwine — Founder & Creative Director</h3>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Naledi Interiors was founded on the principle that space shapes behavior. Our creative director brings a disciplined approach to residential and commercial interiors — one informed by environmental psychology, material science, and a deep respect for how physical environments influence cognitive and emotional well-being.
+                Your environment is training you everyday— designed or not.
               </p>
             </div>
 
             <div className="border-l-2 border-border pl-6">
               <h3 className="font-serif text-lg text-foreground mb-3">Philosophy</h3>
-              <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                We believe design should be invisible in its effort and unmistakable in its effect. Every project begins with understanding — not of aesthetics, but of the people who will inhabit the space.
-              </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Our work draws from environmental psychology and intentional living principles. We study light, proportion, material, and movement to create spaces that support clarity of thought and purposeful daily rituals.
+                People rarely seek better interiors alone.
+                <br />
+                They seek peace.
+                <br />
+                Pride in ownership.
+                <br />
+                A sense of arrival.
+                <br />
+                A home that reflects who they have become — or who they are becoming.
               </p>
             </div>
 
             <div className="bg-secondary p-6">
               <h3 className="font-serif text-lg text-foreground mb-3">The Studio</h3>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                The spaces people live in quietly shape their standards, routines, emotions and sense of self.
+              </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Naledi Interiors is a boutique firm by design. We take on a limited number of projects each year to ensure the depth of attention every client and space deserves.
+                Naledi Interiors exists to shape environments that quietly raise the standard of everyday living.
               </p>
             </div>
           </div>
