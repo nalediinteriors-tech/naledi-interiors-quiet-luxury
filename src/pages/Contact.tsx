@@ -129,7 +129,7 @@ const Contact = () => {
           src={contactHero}
           alt="Elegant interior space"
           className="absolute inset-0 w-full h-full object-cover"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-charcoal/30" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-12 w-full">
@@ -157,7 +157,7 @@ const Contact = () => {
           <div className="bg-background border border-border p-8 lg:p-12 shadow-sm">
             {/* Contact details row */}
             <div className="flex flex-wrap justify-center gap-8 mb-10 pb-10 border-b border-border">
-              <a href="mailto:ni@naledi.com" className="text-foreground hover:text-bronze transition-colors text-base">ni@naledi.com</a>
+              <a href="mailto:ni@nalediinteriors.com" className="text-foreground hover:text-bronze transition-colors text-base">ni@nalediinteriors.com</a>
               <a href="https://wa.me/26773293302" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-bronze transition-colors text-base">+267 73293302</a>
               <span className="text-muted-foreground text-base">Gaborone, Botswana</span>
             </div>
@@ -224,10 +224,10 @@ const Contact = () => {
                     className="w-full bg-transparent border border-border px-4 py-3 text-base text-foreground focus:outline-none focus:border-bronze transition-colors appearance-none"
                   >
                     <option value="" disabled>Select</option>
-                    <option value="50-100k">$50k – $100k</option>
-                    <option value="100-250k">$100k – $250k</option>
-                    <option value="250-500k">$250k – $500k</option>
-                    <option value="500k+">$500k+</option>
+                    <option value="50-100k">P50k – P100k</option>
+                    <option value="100-250k">P100k – P250k</option>
+                    <option value="250-500k">P250k – P500k</option>
+                    <option value="500k+">P500k+</option>
                   </select>
                 </div>
                 <div>
@@ -239,6 +239,7 @@ const Contact = () => {
                     className="w-full bg-transparent border border-border px-4 py-3 text-base text-foreground focus:outline-none focus:border-bronze transition-colors appearance-none"
                   >
                     <option value="" disabled>Select</option>
+                    <option value="4-6-weeks">4 – 6 weeks</option>
                     <option value="3-6">3 – 6 months</option>
                     <option value="6-12">6 – 12 months</option>
                     <option value="12+">12+ months</option>
@@ -344,7 +345,7 @@ const Contact = () => {
                   type="submit"
                   className="w-full bg-foreground text-background text-xs tracking-[0.2em] uppercase px-10 py-5 hover:bg-bronze hover:text-white transition-colors duration-300 font-sans font-medium"
                 >
-                  Submit Inquiry
+                  Submit Enquiry
                 </button>
               </div>
             </form>

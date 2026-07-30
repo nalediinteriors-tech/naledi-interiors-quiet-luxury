@@ -23,4 +23,12 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  // shadcn/ui components export style helpers (cva/variants) alongside the component;
+  // this is standard for the project and not worth splitting in auto-generated files.
+  {
+    files: ["src/components/ui/**/*.{ts,tsx}"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
 );

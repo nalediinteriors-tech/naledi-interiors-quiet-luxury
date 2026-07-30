@@ -141,6 +141,10 @@ export interface Room {
   tone: Tone;
   scene: string;
   image?: string;
+  // Real client-provided caption copy for this room, shown in the lightbox
+  // detail panel (mirrors CorporateSpace.detail). Optional — not every room
+  // has dedicated copy.
+  detail?: string;
 }
 
 export interface Render {
@@ -226,49 +230,69 @@ export const projects: Record<string, Project> = {
 // ---------------------------------------------------------------------------
 // Residential rooms — strict 1-to-1 with source folder images
 // ---------------------------------------------------------------------------
+// Real client-provided captions, transcribed verbatim from the
+// "NALEDI INTERIORS WEBSITE" caption .txt files (July 2026 drop).
+// These are the ONLY text shown in the lightbox for each room — nothing
+// paraphrased or supplemented.
+const havenDetail = "Smaller Footprint. Stronger Experience. A carefully balanced composition designed to make compact living feel intentional, fluid and elevated";
+const blushDetail = "A calm and cocooning space designed for rest and renewal. Layered on a tactile palette that brings life to the neutral colour scheme which is invigorated by the soft, warm lighting that creates an effortlessly inviting atmosphere";
+const manorBedroomDetail = "Comfort is felt in the details. Comfort is not decorative. It is built through proportion, lighting, material balance and the quiet discipline of cohesive design.";
+const manorDiningDetail = "Spaces that settle the mind. This space was designed to slow the room down—balancing softness, structure, and light. Through layered textiles, tonal contrast, and intentional spacing, the room shifts from a functional breakfast nook into a place of pause. Soft furnishes are the quiet power behind the experience. They shape flow. They soften impact. They create quietness. They bring the space to life.";
+const manorLoungeDetail = "The art of atmosphere. Softness. Scale. Rhythm. When elements are selected to balance grandeur with comfort — they allow architecturally rich spaces to feel refined without becoming rigid.";
+// Placeholder — no source caption file existed for Manor's Dressing rooms;
+// TODO: revisit with the client for final copy.
+const manorDressingDetail = "Cohesion. Restraint. Elegance.";
+const lakefrontBedroomDetail = "Soft rhythm. Coastal calm. Evening light. Inspired by the quiet stillness of Lake Victoria, the space layers muted aqua tones, warm neutrals and fluid textures to create a home that feels composed, airy and deeply restorative.";
+const lakefrontDiningDetail = "Flow. Quietness. Soft contrast. Openness. Serenity.";
+const grandeurDiningDetail = "Sophisticated. Inviting. Timeless. Cohesive. Balanced";
+const grandeurLoungeDetail = "Warmth. Texture. Glow. Every layer works together to create calm without losing presence";
+const divaDetail = "Her space. A dressing space shaped through warmth, symmetry and quiet organisation. Designed to make the everyday routine feel calmer and more composed.";
+const restorativeDetail = "Charcoal stone. Walnut timber. Ambient layering. Bathrooms that stop feeling like a room you use — and start feeling like a restorative space you experience. Smart storage. Rain shower. Calming atmosphere";
+const kidsDetail = "Childhood, shaped through space. Each bedroom is designed to reflect a distinct personality through colour, texture and composition — creating spaces that feel expressive, comforting and deeply personal.";
+
 export const rooms: Room[] = [
 
   // ── BOTSWANA / Modern Haven: 1 lounge, 1 bedroom, 1 dining ───────────────
-  { cat: "lounges",  room: "Lounge",       projectKey: "haven", tone: "tone-a", scene: "Sectional sofa · curtain glow",    image: loungeHavenI },
-  { cat: "bedrooms", room: "Bedroom",      projectKey: "haven", tone: "tone-b", scene: "Compact luxury · natural light",   image: bedroomHavenI },
-  { cat: "dining",   room: "Dining Room",  projectKey: "haven", tone: "tone-c", scene: "Compact dining · natural light",   image: diningHavenI },
+  { cat: "lounges",  room: "Lounge",       projectKey: "haven", tone: "tone-a", scene: "Sectional sofa · curtain glow",    image: loungeHavenI,  detail: havenDetail },
+  { cat: "bedrooms", room: "Bedroom",      projectKey: "haven", tone: "tone-b", scene: "Compact luxury · natural light",   image: bedroomHavenI, detail: havenDetail },
+  { cat: "dining",   room: "Dining Room",  projectKey: "haven", tone: "tone-c", scene: "Compact dining · natural light",   image: diningHavenI,  detail: havenDetail },
 
   // ── BOTSWANA / Bougie Blush: 1 lounge, 2 bedrooms ────────────────────────
-  { cat: "lounges",  room: "Lounge",    projectKey: "blush", tone: "tone-c", scene: "Blush tones · plush seating",      image: loungeBlushI },
-  { cat: "bedrooms", room: "Bedroom",   projectKey: "blush", tone: "tone-a", scene: "Blush palette · feminine restraint",image: bedroomBlushI },
-  { cat: "bedrooms", room: "Bedroom II",projectKey: "blush", tone: "tone-b", scene: "Soft textures · considered warmth", image: bedroomBlushII },
+  { cat: "lounges",  room: "Lounge",    projectKey: "blush", tone: "tone-c", scene: "Blush tones · plush seating",      image: loungeBlushI,   detail: blushDetail },
+  { cat: "bedrooms", room: "Bedroom",   projectKey: "blush", tone: "tone-a", scene: "Blush palette · feminine restraint",image: bedroomBlushI,  detail: blushDetail },
+  { cat: "bedrooms", room: "Bedroom II",projectKey: "blush", tone: "tone-b", scene: "Soft textures · considered warmth", image: bedroomBlushII, detail: blushDetail },
 
   // ── UGANDA / Luxe, Modern Manor: 4 lounges, 1 bedroom, 3 dining, 2 dressing
-  { cat: "lounges",  room: "Sitting Room",    projectKey: "manor", tone: "tone-a", scene: "Armchairs · arc floor lamp",         image: loungeManorI },
-  { cat: "lounges",  room: "Sitting Room II", projectKey: "manor", tone: "tone-b", scene: "Statement sofa · curated objects",   image: loungeManorII },
-  { cat: "lounges",  room: "Sitting Room III",projectKey: "manor", tone: "tone-c", scene: "Bespoke joinery · refined palette",  image: loungeManorIII },
-  { cat: "lounges",  room: "Sitting Room IV", projectKey: "manor", tone: "tone-a", scene: "Layered textiles · warm accents",    image: loungeManorIV },
-  { cat: "bedrooms", room: "Bedroom Suite",   projectKey: "manor", tone: "tone-b", scene: "Sculptural headboard · warm glow",   image: bedroomManorI },
-  { cat: "dining",   room: "Formal Dining",   projectKey: "manor", tone: "tone-c", scene: "Carved chairs · gold accents",       image: diningManorI },
-  { cat: "dining",   room: "Dining II",       projectKey: "manor", tone: "tone-a", scene: "Statement pendant · warm hues",      image: diningManorII },
-  { cat: "dining",   room: "Dining III",      projectKey: "manor", tone: "tone-b", scene: "Layered textures · considered",      image: diningManorIII },
-  { cat: "dressing", room: "Walk-In Closet",  projectKey: "manor", tone: "tone-c", scene: "Joinery · dressing bench",           image: walkInClosetManorI },
-  { cat: "dressing", room: "Walk-In Closet II",projectKey:"manor", tone: "tone-a", scene: "Brass rail · considered storage",    image: walkInClosetManorII },
+  { cat: "lounges",  room: "Sitting Room",    projectKey: "manor", tone: "tone-a", scene: "Armchairs · arc floor lamp",         image: loungeManorI,   detail: manorLoungeDetail },
+  { cat: "lounges",  room: "Sitting Room II", projectKey: "manor", tone: "tone-b", scene: "Statement sofa · curated objects",   image: loungeManorII,  detail: manorLoungeDetail },
+  { cat: "lounges",  room: "Sitting Room III",projectKey: "manor", tone: "tone-c", scene: "Bespoke joinery · refined palette",  image: loungeManorIII, detail: manorLoungeDetail },
+  { cat: "lounges",  room: "Sitting Room IV", projectKey: "manor", tone: "tone-a", scene: "Layered textiles · warm accents",    image: loungeManorIV,  detail: manorLoungeDetail },
+  { cat: "bedrooms", room: "Bedroom Suite",   projectKey: "manor", tone: "tone-b", scene: "Sculptural headboard · warm glow",   image: bedroomManorI,       detail: manorBedroomDetail },
+  { cat: "dining",   room: "Formal Dining",   projectKey: "manor", tone: "tone-c", scene: "Carved chairs · gold accents",       image: diningManorI,        detail: manorDiningDetail },
+  { cat: "dining",   room: "Dining II",       projectKey: "manor", tone: "tone-a", scene: "Statement pendant · warm hues",      image: diningManorII,       detail: manorDiningDetail },
+  { cat: "dining",   room: "Dining III",      projectKey: "manor", tone: "tone-b", scene: "Layered textures · considered",      image: diningManorIII,      detail: manorDiningDetail },
+  { cat: "dressing", room: "Walk-In Closet",  projectKey: "manor", tone: "tone-c", scene: "Joinery · dressing bench",           image: walkInClosetManorI,  detail: manorDressingDetail },
+  { cat: "dressing", room: "Walk-In Closet II",projectKey:"manor", tone: "tone-a", scene: "Brass rail · considered storage",    image: walkInClosetManorII, detail: manorDressingDetail },
 
   // ── UGANDA / Lake Front Tranquility: 1 bedroom, 1 dining ─────────────────
-  { cat: "bedrooms", room: "Master Bedroom", projectKey: "lakefront", tone: "tone-b", scene: "Serene heights · considered warmth", image: bedroomLakefrontI },
-  { cat: "dining",   room: "Dining Room",    projectKey: "lakefront", tone: "tone-c", scene: "Lantern pendants · serene",          image: diningLakefrontI },
+  { cat: "bedrooms", room: "Master Bedroom", projectKey: "lakefront", tone: "tone-b", scene: "Serene heights · considered warmth", image: bedroomLakefrontI, detail: lakefrontBedroomDetail },
+  { cat: "dining",   room: "Dining Room",    projectKey: "lakefront", tone: "tone-c", scene: "Lantern pendants · serene",          image: diningLakefrontI,  detail: lakefrontDiningDetail },
 
   // ── UGANDA / Softened Grandeur: 1 lounge, 1 dining ───────────────────────
-  { cat: "lounges", room: "Living Room", projectKey: "grandeur", tone: "tone-b", scene: "Statement pieces · ambient glow",  image: loungeGrandeurI },
-  { cat: "dining",  room: "Dining Room", projectKey: "grandeur", tone: "tone-c", scene: "Dark table · sheer curtains",       image: diningGrandeurI },
+  { cat: "lounges", room: "Living Room", projectKey: "grandeur", tone: "tone-b", scene: "Statement pieces · ambient glow",  image: loungeGrandeurI, detail: grandeurLoungeDetail },
+  { cat: "dining",  room: "Dining Room", projectKey: "grandeur", tone: "tone-c", scene: "Dark table · sheer curtains",       image: diningGrandeurI, detail: grandeurDiningDetail },
 
   // ── UGANDA / Morning Light Diva: 1 dressing ──────────────────────────────
-  { cat: "dressing", room: "Her Space", projectKey: "diva", tone: "tone-c", scene: "Symmetrical wardrobe · ottoman", image: dressingDivaI },
+  { cat: "dressing", room: "Her Space", projectKey: "diva", tone: "tone-c", scene: "Symmetrical wardrobe · ottoman", image: dressingDivaI, detail: divaDetail },
 
   // ── UGANDA / Restorative by Design: 1 bathroom ───────────────────────────
-  { cat: "bathrooms", room: "Bathroom", projectKey: "restorative", tone: "tone-a", scene: "Calm stone · spa-like calm", image: bathroomRestorativeI },
+  { cat: "bathrooms", room: "Bathroom", projectKey: "restorative", tone: "tone-a", scene: "Calm stone · spa-like calm", image: bathroomRestorativeI, detail: restorativeDetail },
 
   // ── UGANDA / Kids Bedrooms: 4 bedrooms ───────────────────────────────────
-  { cat: "bedrooms", room: "Kids Room I",   projectKey: "kids", tone: "tone-a", scene: "Playful colour · considered order",   image: bedroomKidsI },
-  { cat: "bedrooms", room: "Kids Room II",  projectKey: "kids", tone: "tone-b", scene: "Imaginative · calm materiality",      image: bedroomKidsII },
-  { cat: "bedrooms", room: "Kids Room III", projectKey: "kids", tone: "tone-c", scene: "Growing with the child · soft tones", image: bedroomKidsIII },
-  { cat: "bedrooms", room: "Kids Room IV",  projectKey: "kids", tone: "tone-a", scene: "Joyful · purposeful · restful",       image: bedroomKidsIV },
+  { cat: "bedrooms", room: "Kids Room I",   projectKey: "kids", tone: "tone-a", scene: "Playful colour · considered order",   image: bedroomKidsI,   detail: kidsDetail },
+  { cat: "bedrooms", room: "Kids Room II",  projectKey: "kids", tone: "tone-b", scene: "Imaginative · calm materiality",      image: bedroomKidsII,  detail: kidsDetail },
+  { cat: "bedrooms", room: "Kids Room III", projectKey: "kids", tone: "tone-c", scene: "Growing with the child · soft tones", image: bedroomKidsIII, detail: kidsDetail },
+  { cat: "bedrooms", room: "Kids Room IV",  projectKey: "kids", tone: "tone-a", scene: "Joyful · purposeful · restful",       image: bedroomKidsIV,  detail: kidsDetail },
 ];
 
 export const resFilters = [
@@ -296,11 +320,13 @@ export const companies: Company[] = [
       { room: "Examination Room",   tone: "tone-a", scene: "Procedure lighting · clean lines · hygienic materiality",  detail: "Precision and cleanliness without sterility — function dressed in refined restraint.",              image: dermatomeExaminationRoom },
       { room: "Examination Room II",tone: "tone-b", scene: "Treatment zone · cabinetry · backlit niche",          detail: "A secondary treatment space maintaining the same standard of composed, clinical elegance.",                 image: dermatomeExaminationRoom2 },
       { room: "Skin Bar",           tone: "tone-c", scene: "Product display · soft lighting · branded retail",    detail: "A curated retail touchpoint — where clinical expertise meets considered product presentation.",           image: dermatomePlaceholder },
-      { room: "Space I",   tone: "tone-a", scene: "Refined materiality · considered layout",  detail: "Latest works — a refined evolution of the original Dermatome aesthetic.", image: dermatomeNewI },
-      { room: "Space II",  tone: "tone-b", scene: "Clean lines · warm palette",               detail: "Precision detailing in service of patient comfort.",                       image: dermatomeNewII },
-      { room: "Space III", tone: "tone-c", scene: "Soft light · purposeful layout",           detail: "A space where function and calm coexist without compromise.",               image: dermatomeNewIII },
-      { room: "Space IV",  tone: "tone-a", scene: "Clinical warmth · neutral tones",          detail: "Balancing clinical necessity with the ease of a considered environment.",    image: dermatomeNewIV },
-      { room: "Space V",   tone: "tone-b", scene: "Branded presence · refined finish",        detail: "The full Dermatome experience expressed in its most refined form.",          image: dermatomeNewV },
+      // dermatomeNewI is a non-reception clinical space; dermatomeNewII is the
+      // actual reception desk (matches the "Reception Desk Image" caption).
+      { room: "Space I",   tone: "tone-a", scene: "Refined materiality · considered layout",  detail: "Comfort, trust and clinical care. Every decision was made to reinforce clarity, trust and professionalism.", image: dermatomeNewI },
+      { room: "Space II",  tone: "tone-b", scene: "Clean lines · warm palette",               detail: "First impressions must feel intentional. Designed as a cohesive system, the space balances patient comfort with clinical efficiency. Material selection, lighting and spatial flow were aligned to create a calm, reassuring experience.", image: dermatomeNewII },
+      { room: "Space III", tone: "tone-c", scene: "Soft light · purposeful layout",           detail: "Comfort, trust and clinical care. Every decision was made to reinforce clarity, trust and professionalism.", image: dermatomeNewIII },
+      { room: "Space IV",  tone: "tone-a", scene: "Clinical warmth · neutral tones",          detail: "Comfort, trust and clinical care. Every decision was made to reinforce clarity, trust and professionalism.", image: dermatomeNewIV },
+      { room: "Space V",   tone: "tone-b", scene: "Branded presence · refined finish",        detail: "Comfort, trust and clinical care. Every decision was made to reinforce clarity, trust and professionalism.", image: dermatomeNewV },
     ],
   },
   {

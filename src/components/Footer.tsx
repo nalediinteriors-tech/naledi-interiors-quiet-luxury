@@ -1,28 +1,11 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
-import NalediLogo from "./NalediLogo";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+      {/* Logo and tagline removed; footer rebalanced to 4 columns with Services + CTA. */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div>
-          <NalediLogo iconHeight={56} className="mb-6" dark />
-          <p className="text-sm text-primary-foreground/60 leading-relaxed max-w-xs mb-6">
-            Interior design guided by human behavior, intention, and refined execution.
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Instagram">
-              <Instagram size={18} />
-            </a>
-            <a href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="LinkedIn">
-              <Linkedin size={18} />
-            </a>
-            <a href="https://www.facebook.com/nalediinteriorsUganda" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Facebook">
-              <Facebook size={18} />
-            </a>
-          </div>
-        </div>
         <div>
           <h4 className="text-xs tracking-[0.2em] uppercase mb-4">Navigation</h4>
           <div className="space-y-3">
@@ -45,7 +28,7 @@ const Footer = () => (
         <div>
           <h4 className="text-xs tracking-[0.2em] uppercase mb-4">Contact</h4>
           <div className="space-y-3 text-sm text-primary-foreground/60">
-            <a href="mailto:ni@naledi.com" className="block hover:text-primary-foreground transition-colors">ni@naledi.com</a>
+            <a href="mailto:ni@nalediinteriors.com" className="block hover:text-primary-foreground transition-colors">ni@nalediinteriors.com</a>
             <a href="https://wa.me/26773293302" target="_blank" rel="noopener noreferrer" className="block hover:text-primary-foreground transition-colors">
               +267 73293302
             </a>
@@ -57,20 +40,30 @@ const Footer = () => (
             Gaborone, Botswana
           </p>
         </div>
+        <div>
+          <h4 className="text-xs tracking-[0.2em] uppercase mb-4 text-right">Services</h4>
+          <div className="space-y-3 text-sm text-primary-foreground/60 text-right">
+            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Interior Design</Link>
+            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Spatial Planning</Link>
+            <Link to="/services" className="block hover:text-primary-foreground transition-colors">FF&E Design</Link>
+            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Procurement</Link>
+            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Delivery & Installation</Link>
+          </div>
+        </div>
       </div>
       <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-primary-foreground/40">
           © {new Date().getFullYear()} Naledi Interiors. All rights reserved.
         </p>
-        <div className="flex items-center gap-6">
-          <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
-            Instagram
+        <div className="flex items-center gap-4">
+          <a href="https://instagram.com/nalediinteriors" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Instagram">
+            <Instagram size={18} />
           </a>
-          <a href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
-            LinkedIn
+          <a href="https://www.linkedin.com/company/naledi-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="LinkedIn">
+            <Linkedin size={18} />
           </a>
-          <a href="https://www.facebook.com/nalediinteriorsUganda" target="_blank" rel="noopener noreferrer" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors">
-            Facebook
+          <a href="https://www.facebook.com/nalediinteriorsUganda" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors" aria-label="Facebook">
+            <Facebook size={18} />
           </a>
         </div>
       </div>

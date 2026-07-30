@@ -129,7 +129,7 @@ const ExitIntentPopup = () => {
 
           {/* Email option */}
           <a
-            href="mailto:ni@naledi.com"
+            href="mailto:ni@nalediinteriors.com"
             className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-foreground hover:text-terracotta transition-colors border-b border-border hover:border-terracotta pb-1"
           >
             <Mail size={14} />

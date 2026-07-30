@@ -327,7 +327,6 @@ function Lightbox({
   let loc = "";
   let desc = "";
   let roomLabel = "";
-  let detail = "";
   let tone: Tone = "tone-a";
   let imgSrc: string | undefined;
   // Each sibling carries its full LightboxItem so clicking it navigates correctly
@@ -339,7 +338,9 @@ function Lightbox({
     const p = projects[r.projectKey];
     title = p.name;
     loc = p.loc;
-    desc = p.desc;
+    // Show only the real, verbatim client-provided caption for this room —
+    // not the paraphrased project-level desc — so no invented copy appears.
+    desc = r.detail ?? "";
     roomLabel = r.room;
     tone = r.tone;
     imgSrc = r.image;
@@ -351,9 +352,10 @@ function Lightbox({
     const { space, company } = item;
     title = company.name;
     loc = company.loc;
-    desc = company.intro;
+    // Show only the per-space caption — the project intro is shown on the main
+    // portfolio card/list, so repeating it in every lightbox is not requested.
+    desc = space.detail;
     roomLabel = space.room;
-    detail = space.detail;
     tone = space.tone;
     imgSrc = space.image;
     siblings = company.spaces
@@ -408,11 +410,6 @@ function Lightbox({
           <p className="font-serif italic text-bronze text-lg">{loc}</p>
           <div className="w-12 h-px bg-bronze my-7" />
           <p className="text-muted-foreground text-base leading-relaxed">{desc}</p>
-          {detail && (
-            <p className="mt-5 text-foreground text-[15px] leading-relaxed border-l-2 border-bronze pl-4">
-              {detail}
-            </p>
-          )}
           {siblings.length > 0 && (
             <div className="mt-10">
               <p className="font-sans text-[11px] tracking-[0.24em] uppercase text-muted-foreground mb-5">
@@ -484,7 +481,7 @@ const Portfolio = () => {
           src={portfolioHero}
           alt="Naledi Interiors portfolio"
           className="absolute inset-0 w-full h-full object-cover"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-charcoal/30" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-12 w-full">

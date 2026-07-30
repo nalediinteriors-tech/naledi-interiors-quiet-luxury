@@ -9,12 +9,6 @@ import project3 from "@/assets/projects-new/Modern Classic Mansion (1).jpg";
 import project4 from "@/assets/projects-new/Makindye Walk in closet i.jpg";
 import project5 from "@/assets/projects-new/bedroom.jpg";
 import project6 from "@/assets/projects-new/Makindye speakeasy (1).jpg";
-import review1 from "@/assets/review-1.jpg";
-import review2 from "@/assets/review-2.jpg";
-import review3 from "@/assets/review-3.jpg";
-import review4 from "@/assets/review-4.jpg";
-import review5 from "@/assets/review-5.jpg";
-
 const projects = [
   { image: project1, name: "Tlokweng Modern Haven", location: "Gaborone", desc: "A contemporary sanctuary blending modern aesthetics with local heritage." },
   { image: project2, name: "The Lounge Residence", location: "Gaborone", desc: "Sophisticated living spaces designed for elevated everyday moments." },
@@ -55,7 +49,7 @@ const Index = () => {
         src={heroImage}
         alt="Refined luxury interior living room with natural textures"
         className="absolute inset-0 w-full h-full object-cover"
-        fetchpriority="high"
+        fetchPriority="high"
         width={1920}
         height={1080}
       />
@@ -178,45 +172,7 @@ const Index = () => {
     </section>
 
 
-    {/* CONCEPT 1: Reviews Marquee - Editorial cards with borders */}
-    <section className="py-16 lg:py-20 overflow-hidden bg-secondary">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
-        <div className="flex items-end justify-between border-b border-border pb-8">
-          <div>
-            <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Testimonials</p>
-            <h2 className="font-serif text-2xl md:text-3xl text-foreground">Client Words</h2>
-          </div>
-        </div>
-      </div>
-      <div className="relative">
-        <div className="flex animate-marquee w-max gap-px bg-border">
-          {[
-            { img: review1, name: "Amara Osei", role: "Homeowner, Johannesburg", quote: "Naledi didn't just design our home — they understood how we wanted to feel in it. Every room has intention." },
-            { img: review2, name: "David Hartley", role: "Property Developer", quote: "The level of precision and spatial awareness is unmatched. Our buyers notice the difference immediately." },
-            { img: review3, name: "Priya Naidoo", role: "Homeowner, Cape Town", quote: "Working with Naledi felt like a conversation, not a transaction. The result is a space that truly reflects us." },
-            { img: review4, name: "Sipho Mthembu", role: "Architect & Collaborator", quote: "Their understanding of material and proportion elevates every project. A rare level of discipline in this industry." },
-            { img: review5, name: "Catherine Voss", role: "Homeowner, Pretoria", quote: "Restrained, thoughtful, and deeply personal. Our home feels like it was always meant to be this way." },
-            { img: review1, name: "Amara Osei", role: "Homeowner, Johannesburg", quote: "Naledi didn't just design our home — they understood how we wanted to feel in it. Every room has intention." },
-            { img: review2, name: "David Hartley", role: "Property Developer", quote: "The level of precision and spatial awareness is unmatched. Our buyers notice the difference immediately." },
-            { img: review3, name: "Priya Naidoo", role: "Homeowner, Cape Town", quote: "Working with Naledi felt like a conversation, not a transaction. The result is a space that truly reflects us." },
-            { img: review4, name: "Sipho Mthembu", role: "Architect & Collaborator", quote: "Their understanding of material and proportion elevates every project. A rare level of discipline in this industry." },
-            { img: review5, name: "Catherine Voss", role: "Homeowner, Pretoria", quote: "Restrained, thoughtful, and deeply personal. Our home feels like it was always meant to be this way." },
-          ].map((r, i) => (
-            <div key={i} className="flex-shrink-0 w-[380px] bg-background p-10">
-              <div className="w-8 h-px bg-terracotta mb-6" />
-              <p className="font-serif text-base text-foreground leading-relaxed mb-6 italic">"{r.quote}"</p>
-              <div className="flex items-center gap-4">
-                <img src={r.img} alt={r.name} loading="lazy" width={48} height={48} className="w-12 h-12 rounded-full object-cover" />
-                <div>
-                  <p className="text-sm text-foreground font-sans font-medium">{r.name}</p>
-                  <p className="text-xs text-muted-foreground font-sans font-light">{r.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    {/* Testimonials / Client Words section hidden until real testimonials are available. */}
 
     {/* CONCEPT 1: Values - Split-screen with image and accordion */}
     <section className="py-16 lg:py-20 bg-background border-t border-border">
