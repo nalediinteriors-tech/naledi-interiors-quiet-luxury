@@ -21,7 +21,7 @@ Marketing and portfolio website for **Naledi Interiors** — a boutique interior
 | Route | Page |
 |---|---|
 | `/` | Home — hero, marquee reviews, portfolio |
-| `/about` | About — founder story, team (Lise, Daphney, Abijah) |
+| `/about` | About — founder story, team (Lise, Daphney, Basetsana) |
 | `/services` | Services listing |
 | `/contact` | Contact form + FAQ accordion |
 

@@ -13,7 +13,6 @@ const QUALITY = 82;
 const MAP = [
   { folder: "Lise", src: "Lise.jpg", dest: "lise.jpg" },
   { folder: "Daphney", src: "Daphney.jpg", dest: "daphney.jpg" },
-  { folder: "Abijah", src: "Abijah.jpg", dest: "abijah.jpg" },
   { folder: "Tshire", src: "Tshire.jpg", dest: "tshire-founder.jpg", crop: [2, 3], position: "north" },
   { folder: "Tsitsi/final", src: "basetsana rantao.jpg", dest: "basetsana.jpg" },
 ];
