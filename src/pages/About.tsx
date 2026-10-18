@@ -4,14 +4,12 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 import aboutHero from "@/assets/projects-new/Fb banner supporting ii.jpg";
 import liseImg from "@/assets/team/lise.jpg";
 import daphneyImg from "@/assets/team/daphney.jpg";
-import abijahImg from "@/assets/team/abijah.jpg";
 import tshireImg from "@/assets/team/tshire-founder.jpg";
 import basetsanaImg from "@/assets/team/basetsana.jpg";
 
 const team = [
   { name: "Lise Kedikilwe", role: "Operations and Talent Care", desc: "Strengthening internal systems, nurturing top talent, and elevating daily performance — the engine behind seamless operations.", image: liseImg },
   { name: "Daphney Sandile Elias", role: "Client Care and Administration", desc: "Where exceptional client journeys begin — building trust from the very first hello.", image: daphneyImg },
-  { name: "Abijah Diphofu", role: "Finance and Accounts", desc: "Sourcing and maximizing the best value through precise financial oversight and strategic vendor relationships.", image: abijahImg },
   { name: "Basetsana Rantao", role: "Apprentice Interior Designer", desc: "Contributing fresh perspectives while mastering the principles of refined, client-centered interiors.", image: basetsanaImg },
 ];
 
@@ -111,7 +109,7 @@ const About = () => {
           A focused collective of specialists.
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           {team.map((member) => (
             <button
               key={member.name}

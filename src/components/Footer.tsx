@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
+import ServicePanel from "@/components/ServicePanel";
+import { services } from "@/data/services";
 
-const Footer = () => (
+const Footer = () => {
+  const [openService, setOpenService] = useState<string | null>(null);
+  const onServicesPage = useLocation().pathname === "/services";
+
+  return (
   <footer className="bg-primary text-primary-foreground">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
       {/* Logo and tagline removed; footer rebalanced to 4 columns with Services + CTA. */}
@@ -43,11 +50,27 @@ const Footer = () => (
         <div>
           <h4 className="text-xs tracking-[0.2em] uppercase mb-4 text-right">Services</h4>
           <div className="space-y-3 text-sm text-primary-foreground/60 text-right">
-            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Interior Design</Link>
-            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Spatial Planning</Link>
-            <Link to="/services" className="block hover:text-primary-foreground transition-colors">FF&E Design</Link>
-            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Procurement</Link>
-            <Link to="/services" className="block hover:text-primary-foreground transition-colors">Delivery & Installation</Link>
+            {/* On /services each name jumps to its card; elsewhere it opens the side panel */}
+            {services.map((s) =>
+              onServicesPage ? (
+                <Link
+                  key={s.id}
+                  to={`/services#${s.id}`}
+                  className="block hover:text-primary-foreground transition-colors focus:outline-none focus-visible:text-primary-foreground focus-visible:underline"
+                >
+                  {s.title}
+                </Link>
+              ) : (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => setOpenService(s.id)}
+                  className="block ml-auto hover:text-primary-foreground transition-colors focus:outline-none focus-visible:text-primary-foreground focus-visible:underline"
+                >
+                  {s.title}
+                </button>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -68,7 +91,9 @@ const Footer = () => (
         </div>
       </div>
     </div>
+    <ServicePanel serviceId={openService} onSelect={setOpenService} />
   </footer>
-);
+  );
+};
 
 export default Footer;

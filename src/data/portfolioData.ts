@@ -329,18 +329,6 @@ export const companies: Company[] = [
       { room: "Space V",   tone: "tone-b", scene: "Branded presence · refined finish",        detail: "Comfort, trust and clinical care. Every decision was made to reinforce clarity, trust and professionalism.", image: dermatomeNewV },
     ],
   },
-  {
-    name: "Apex",
-    sub: "Corporate office",
-    loc: "Gaborone, Botswana",
-    intro: "A corporate environment composed for focus, collaboration and presence — reception through to executive suite.",
-    spaces: [
-      { room: "Reception",        tone: "tone-b", scene: "Front desk · branded wall",  detail: "A first impression built on presence and precision." },
-      { room: "Boardroom",        tone: "tone-c", scene: "Long table · pendant run",    detail: "Commanding proportions designed for decisive meetings." },
-      { room: "Executive Office", tone: "tone-a", scene: "Desk · lounge corner",        detail: "Private, refined — a space that matches executive clarity." },
-      { room: "Breakout Lounge",  tone: "tone-b", scene: "Soft seating · coffee bar",   detail: "Informal collaboration framed in comfort and ease." },
-    ],
-  },
 ];
 
 // ---------------------------------------------------------------------------

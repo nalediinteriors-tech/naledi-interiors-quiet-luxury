@@ -1,29 +1,8 @@
+import { useEffect, useRef, useState } from "react";
 import Layout from "@/components/Layout";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import servicesHero from "@/assets/projects-new/Modern Classic Mansion ii.jpg";
-
-const services = [
-  {
-    title: "INTERIOR DESIGN",
-    desc: "Our Interior Design Studio offers a highly personalised service, designing beautifully crafted interiors that reflect each client's individual style and aspirations. Working closely with you throughout the design process, we ensure that every detail is considered and tailored to create a home that truly resonates with you. From conceptual design through to the final touches, our dedicated team harmonises comfort, elegance, and functionality. The result is a thoughtfully curated space where luxury and personal style converge.",
-  },
-  {
-    title: "SPATIAL PLANNING",
-    desc: "Strategic analysis of flow, proportion, and function lies at the heart of our approach. We optimise layouts to support how you move through and use your space, informed by behavioural insight and architectural understanding. Whether working on a contemporary residence or a traditional home, our focus is on crafting spaces that balance luxurious aesthetics with everyday functionality. We create homes that are timeless and deeply personal, embodying a refined elegance while enhancing the way you live.",
-  },
-  {
-    title: "FF&E DESIGN",
-    desc: "Our FF&E Design team expertly blends fabrics, finishes, and furnishings to create bespoke schemes that are meticulously tailored to your project. Every element, from the design of custom furniture to the selection of fine materials, is chosen with care to align with your personal aesthetic. We are committed to delivering harmonious interiors where every detail contributes to the overall sense of sophistication and comfort. The result is a space that feels effortlessly refined yet inviting.",
-  },
-  {
-    title: "PROCUREMENT",
-    desc: "Our Procurement Service offers a comprehensive and seamless experience, sourcing the finest materials, furnishings, and accessories from a trusted global network of suppliers. We oversee every stage of the procurement process, ensuring that each element is delivered to the highest standard and perfectly aligned with the design vision. From managing orders to coordinating logistics, our team handles the entire journey with precision, guaranteeing a smooth process from selection through to delivery.",
-  },
-  {
-    title: "DELIVERY & INSTALLATION",
-    desc: "Our Delivery and Installation Service ensures that every piece, from the largest architectural element to the smallest decorative accessory, is installed with care and attention to detail. With meticulous planning and coordination, we ensure that the entire process is smooth and efficient, leaving your home perfectly dressed and ready to enjoy. Our team of experts oversee every aspect of installation, ensuring that each piece is positioned and styled to enhance the overall design, completing the transformation of your space with precision.",
-  },
-];
+import { services } from "@/data/services";
 
 const steps = [
   { num: "01", title: "Discovery", desc: "Understanding your vision through structured dialogue and observation." },
@@ -42,7 +21,47 @@ const getDetailedDesc = (stepNum: string) => {
   return details[stepNum] || "";
 };
 
-const Services = () => (
+// Cards stick at top-24 (6rem) and the stack has space-y-6 (1.5rem) gaps
+const STICKY_TOP_REM = 6;
+const CARD_GAP_REM = 1.5;
+
+const Services = () => {
+  const { hash, key } = useLocation();
+  const stackRef = useRef<HTMLDivElement>(null);
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+
+  // /services#procurement scrolls to that card and glows it briefly. The cards
+  // are sticky, so their on-screen position can't be used: the target is worked
+  // out from the stack's top plus the height of every card above it, once the
+  // web fonts have loaded (on a fresh page load they change the card heights).
+  useEffect(() => {
+    const id = hash.slice(1);
+    const index = services.findIndex((s) => s.id === id);
+    if (index < 0) return;
+
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
+    document.fonts.ready.then(() => {
+      const stack = stackRef.current;
+      if (cancelled || !stack) return;
+
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      const cards = Array.from(stack.children) as HTMLElement[];
+      const above = cards.slice(0, index).reduce((sum, card) => sum + card.offsetHeight + CARD_GAP_REM * rem, 0);
+      const top = stack.getBoundingClientRect().top + window.scrollY + above - STICKY_TOP_REM * rem;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+
+      setHighlighted(id);
+      timer = setTimeout(() => setHighlighted(null), 1800);
+    });
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [hash, key]);
+
+  return (
   <Layout>
     {/* Hero Section */}
     <section className="relative h-[60vh] min-h-[400px] flex items-end">
@@ -72,11 +91,14 @@ const Services = () => (
         </div>
 
         {/* Stacked cards - spiced up */}
-        <div className="relative space-y-6">
+        <div ref={stackRef} className="relative space-y-6">
           {services.map((s, i) => (
             <div 
-              key={i} 
-              className="group sticky top-24 bg-background/95 backdrop-blur-sm border border-border shadow-lg hover:shadow-2xl hover:shadow-bronze/10 hover:-translate-y-2 transition-all duration-700 cursor-pointer overflow-hidden"
+              key={s.id} 
+              id={s.id}
+              className={`group sticky top-24 bg-background/95 backdrop-blur-sm border hover:shadow-2xl hover:shadow-bronze/10 hover:-translate-y-2 transition-all duration-700 cursor-pointer overflow-hidden ${
+                highlighted === s.id ? "border-bronze shadow-[0_0_48px_hsl(var(--bronze)/0.35)]" : "border-border shadow-lg"
+              }`}
               style={{ zIndex: i + 1 }}
             >
               {/* Animated background gradient */}
@@ -100,21 +122,12 @@ const Services = () => (
                   {/* Bronze accent dot */}
                   <div className="absolute top-8 right-8 w-2 h-2 rounded-full bg-bronze/0 group-hover:bg-bronze transition-all duration-500" />
                   
-                  <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-bronze transition-colors duration-300">
+                  <h3 className="font-serif text-2xl lg:text-3xl uppercase text-foreground mb-4 group-hover:text-bronze transition-colors duration-300">
                     {s.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed max-w-2xl text-base lg:text-lg">
                     {s.desc}
                   </p>
-                  
-                  {/* Enhanced hover indicator */}
-                  <div className="mt-6 flex items-center gap-3 text-bronze opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
-                    <span className="font-sans text-[11px] tracking-[0.2em] uppercase font-medium">Discover more</span>
-                    <div className="w-8 h-px bg-bronze" />
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
                 </div>
               </div>
             </div>
@@ -141,19 +154,10 @@ const Services = () => (
               className="group relative h-80 cursor-pointer"
               style={{ transformStyle: 'preserve-3d' }}
             >
-              {/* Inner container that flips */}
-              <div 
-                className="relative w-full h-full transition-transform duration-700"
-                style={{ 
-                  transformStyle: 'preserve-3d',
-                  transform: 'rotateY(0deg)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'rotateY(180deg)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'rotateY(0deg)';
-                }}
+              {/* Inner container that flips on hover of the still outer card, so the flip can't cancel itself */}
+              <div
+                className="relative w-full h-full transition-transform duration-700 [transform:rotateY(0deg)] group-hover:[transform:rotateY(180deg)]"
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Front Face */}
                 <div 
@@ -240,6 +244,7 @@ const Services = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Services;
