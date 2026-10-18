@@ -167,7 +167,7 @@ function ResCard({ room: r, index, onClick }: { room: Room; index: number; onCli
             <h3 className="font-serif text-lg leading-tight">{project.name}</h3>
           </div>
           <span className="font-sans text-[10px] tracking-[0.18em] uppercase text-muted-foreground whitespace-nowrap pt-1">
-            {project.loc.split(",")[0]}
+            {project.loc}
           </span>
         </div>
       </button>
@@ -243,7 +243,7 @@ function CorpCard({
             <h3 className="font-serif text-lg leading-tight">{company.name}</h3>
           </div>
           <span className="font-sans text-[10px] tracking-[0.18em] uppercase text-muted-foreground whitespace-nowrap pt-1">
-            {company.loc.split(",")[0]}
+            {company.loc}
           </span>
         </div>
       </button>

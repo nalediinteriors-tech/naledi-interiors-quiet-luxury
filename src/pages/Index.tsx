@@ -10,12 +10,12 @@ import project4 from "@/assets/projects-new/Makindye Walk in closet i.jpg";
 import project5 from "@/assets/projects-new/bedroom.jpg";
 import project6 from "@/assets/projects-new/Makindye speakeasy (1).jpg";
 const projects = [
-  { image: project1, name: "Tlokweng Modern Haven", location: "Gaborone", desc: "A contemporary sanctuary blending modern aesthetics with local heritage." },
-  { image: project2, name: "The Lounge Residence", location: "Gaborone", desc: "Sophisticated living spaces designed for elevated everyday moments." },
-  { image: project3, name: "Modern Classic Mansion", location: "Botswana", desc: "Timeless elegance meets contemporary luxury in grand proportions." },
-  { image: project4, name: "Makindye Walk-In Closet", location: "Uganda", desc: "Bespoke storage solutions crafted with meticulous attention to detail." },
-  { image: project5, name: "The Bedroom Suite", location: "Gaborone", desc: "A master retreat designed for rest, reflection, and refined comfort." },
-  { image: project6, name: "Makindye Speakeasy", location: "Uganda", desc: "An intimate entertainment space with mood and character." },
+  { image: project1, name: "Tlokweng Modern Haven", location: "Tlokweng, Botswana", desc: "A contemporary sanctuary blending modern aesthetics with local heritage." },
+  { image: project2, name: "The Lounge Residence", location: "Tlokweng, Botswana", desc: "Sophisticated living spaces designed for elevated everyday moments." },
+  { image: project3, name: "Modern Classic Mansion", location: "Uganda", desc: "Timeless elegance meets contemporary luxury in grand proportions." },
+  { image: project4, name: "Makindye Walk-In Closet", location: "Makindye, Uganda", desc: "Bespoke storage solutions crafted with meticulous attention to detail." },
+  { image: project5, name: "The Bedroom Suite", location: "Gaborone, Botswana", desc: "A master retreat designed for rest, reflection, and refined comfort." },
+  { image: project6, name: "Makindye Speakeasy", location: "Makindye, Uganda", desc: "An intimate entertainment space with mood and character." },
 ];
 
 const pillars = [
@@ -139,7 +139,7 @@ const Index = () => {
             <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Portfolio</p>
             <h2 className="font-serif text-2xl md:text-3xl text-foreground">Selected Work</h2>
           </div>
-          <Link to="/services" className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-terracotta transition-colors hidden md:block">
+          <Link to="/portfolio" className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-terracotta transition-colors hidden md:block">
             View All Projects
           </Link>
         </div>
@@ -157,12 +157,12 @@ const Index = () => {
                 />
               </div>
               <div className="p-8 border-t border-border">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-6">
                   <div>
                     <h3 className="font-serif text-lg text-foreground mb-2">{p.name}</h3>
                     <p className="text-sm text-muted-foreground font-sans font-light">{p.desc}</p>
                   </div>
-                  <span className="font-sans text-xs tracking-[0.2em] uppercase text-terracotta">{p.location}</span>
+                  <span className="font-sans text-xs tracking-[0.2em] uppercase text-terracotta text-right max-w-[40%]">{p.location}</span>
                 </div>
               </div>
             </div>
