@@ -5,6 +5,31 @@ Format: `[YYYY-MM-DD] — Description`
 
 ---
 
+## [2026-10-18]
+
+### About Page
+- Removed **Abijah Diphofu** (Finance and Accounts) from the team grid after her resignation
+- Deleted `src/assets/team/abijah.jpg` and its entry in `scripts/process-team-images.mjs`
+- Team grid now shows 3 members: **Lise**, **Daphney**, **Basetsana**
+
+### Portfolio
+- Removed the **Apex** corporate project (it only had placeholder spaces, no photos)
+- Every project location now reads "Area, Country", on the Portfolio cards, the lightbox and the home page "Selected Work" cards
+- Home page corrections: Tlokweng Modern Haven and The Lounge Residence moved from "Gaborone" to "Tlokweng, Botswana"; Modern Classic Mansion moved from "Botswana" to "Uganda"
+- Modern Classic Mansion and Kids Bedrooms show "Uganda" only until their areas are known
+
+### Services & Navigation
+- Removed the "Discover more" hover label from the five service cards (it looked like a link but went nowhere)
+- Added `src/components/ScrollToTop.tsx`: every page now opens at the top. Before this, footer links opened the next page at its bottom, which is why every footer service link seemed to land on "Delivery & Installation"
+- Fixed the shaky "Our Process" flip cards: hover is now read from the still outer card instead of the rotating inner one, which slipped out from under the cursor mid-flip and flipped back
+- Home page "View All Projects" now opens `/portfolio` (it pointed at `/services`)
+
+### Footer service links
+- Each footer service now goes somewhere of its own. Before this, all five opened the same `/services` page
+- On the Services page, a footer service scrolls to its card (e.g. `/services#procurement`) and gives the card a brief bronze glow. The scroll target is worked out from the card stack's layout, because the cards are sticky
+- On every other page, a footer service opens a side panel (`src/components/ServicePanel.tsx`) with the service description, a "Book a … consultation" button that opens `/contact`, and the other services one click away
+- Service wording moved to `src/data/services.ts`, shared by the Services page and the panel so they can't drift apart
+
 ## [2026-07-08]
 
 ### Home Page
@@ -126,7 +151,8 @@ Format: `[YYYY-MM-DD] — Description`
 ## Pending / To Do
 
 - [ ] Add real founder portrait (`founder-tshireletso.jpg` — 900×1200px, 3:4)
-- [ ] Add team photos: `team-lise.jpg`, `team-daphney.jpg`, `team-abijah.jpg` (600×800px, 3:4)
-- [ ] Replace Apex corporate placeholders with real images
+- [ ] Add team photos: `team-lise.jpg`, `team-daphney.jpg` (600×800px, 3:4)
 - [ ] Replace Dermatome "Skin Bar" placeholder with final photo
-- [ ] Wire up contact form submission (Netlify Forms or EmailJS)
+- [ ] Wire up contact form submission (Netlify Forms or EmailJS). The form in `src/pages/Contact.tsx` currently only shows a "Thank you" alert, so enquiries are lost
+- [ ] Give each service its own detail content, then bring back a "Discover more" link on the service cards in `src/pages/Services.tsx`
+- [ ] Find the area for Modern Classic Mansion and Kids Bedrooms (both Uganda) so they match the "Area, Country" format
