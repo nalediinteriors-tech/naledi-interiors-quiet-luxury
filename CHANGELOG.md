@@ -5,6 +5,11 @@ Format: `[YYYY-MM-DD] — Description`
 
 ---
 
+## [2026-11-14]
+
+### Exit pop-up
+- Fixed the Instagram link in the "Before You Go" pop-up: it pointed to `instagram.com/naledinteriors` (missing an "i"). It now opens `instagram.com/nalediinteriors`, the same account the footer and Contact page link to
+
 ## [2026-10-18]
 
 ### About Page
